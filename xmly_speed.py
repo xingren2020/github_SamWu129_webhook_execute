@@ -80,6 +80,10 @@ def smartNotify(content):
             'sckey = SCKEY', 'sckey="'+notify_serverJ+'"', 1)
     # if notify_tg_token is not None and notify_tg_userId is not None:
     #     content = content.replace("", "")
+
+    # only for test
+    content = content.replace(
+        'if _notify_time.split()[0] == str(notify_time) and int(_notify_time.split()[1]) > 30:', 'if True:', 1)
     return content
 
 
