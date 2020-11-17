@@ -82,8 +82,8 @@ def smartNotify(content):
     #     content = content.replace("", "")
 
     # only for test
-    content = content.replace(
-        'if _notify_time.split()[0] == str(notify_time) and int(_notify_time.split()[1]) > 30:', 'if True:', 1)
+    # content = content.replace(
+    #     'if _notify_time.split()[0] == str(notify_time) and int(_notify_time.split()[1]) > 30:', 'if True:', 1)
     return content
 
 
