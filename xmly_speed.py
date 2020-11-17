@@ -66,18 +66,20 @@ def isJumpIndex(idx):
 def smartNotify(content):
     notify_bark = readSecret("BARK_PUSH")
     notify_serverJ = readSecret("PUSH_KEY")
-    notify_tg_token = readSecret("TG_BOT_TOKEN")
-    notify_tg_userId = readSecret("TG_USER_ID")
+    # notify_tg_token = readSecret("TG_BOT_TOKEN")
+    # notify_tg_userId = readSecret("TG_USER_ID")
     if not content:
         return content
     if notify_bark is not None:
+        print("bark通知已开启")
         content = content.replace(
             'bark_token = BARK', 'bark_token="'+notify_bark+'"', 1)
     if notify_serverJ is not None:
+        print("server酱通知已开启")
         content = content.replace(
             'sckey = SCKEY', 'sckey="'+notify_serverJ+'"', 1)
-    if notify_tg_token is not None and notify_tg_userId is not None:
-        content = content.replace("", "")
+    # if notify_tg_token is not None and notify_tg_userId is not None:
+    #     content = content.replace("", "")
     return content
 
 
@@ -117,5 +119,6 @@ def run():
         os.system('python ./'+'execute'+str(idx)+'.py')
     print("\n***************************\n文件全部执行完毕")
     exit(0)
+
 
 run()
