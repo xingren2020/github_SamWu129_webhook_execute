@@ -1,13 +1,13 @@
-name: 京东泡泡大战
+name: 京东特权值
 
 on:
     workflow_dispatch:
     schedule:
-        - cron: "20 16 * * *"
+        - cron: "20 0 * * *"
     watch:
         types: [started]
     repository_dispatch:
-        types: jd_paopao
+        types: jd_tqz
 
 jobs:
     build:
@@ -23,7 +23,7 @@ jobs:
             - name: npm install
               run: |
                   npm install
-            - name: "运行【泡泡大战】"
+            - name: "运行【京东特权值】"
               run: |
                   node onlyOneExecute.js
               env:
@@ -36,4 +36,4 @@ jobs:
                   TG_USER_ID: ${{ secrets.TG_USER_ID }}
                   DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
                   DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-                  SYNCURL: https://github.com/799953468/Quantumult-X/raw/master/Scripts/JD/jd_paopao.js
+                  SYNCURL: https://github.com/iisams/Scripts/raw/master/liwo/jdtqz.js
