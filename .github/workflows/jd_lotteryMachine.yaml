@@ -17,12 +17,13 @@ jobs:
         runs-on: ubuntu-latest
         if: github.event.repository.owner.id == github.event.sender.id
         steps:
-            - uses: actions/checkout@v1
-            - name: Use Node.js 10.x
+            - name: 拉取代码
+              uses: actions/checkout@v2
+            - name: 设置运行环境-Node.js 10.x
               uses: actions/setup-node@v1
               with:
                   node-version: 10.x
-            - name: npm install
+            - name: 安装依赖包
               run: |
                   npm install
             - name: "运行 【东东抽奖机】【新店福利】【东东福利屋】【东东生活】【闪购盲盒】【疯狂砸金蛋】"
