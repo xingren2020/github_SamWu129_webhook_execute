@@ -1,6 +1,6 @@
 const axios = require("axios");
 const fs = require("fs");
-async function replaceWithSecrets(content, Secrets, ext) {
+async function magic(content, Secrets, ext) {
     if (!Secrets || !Secrets) return content;
     const replacements = [];
     await init_notify(Secrets, content, replacements);
@@ -149,5 +149,5 @@ async function download_jdMarket(content) {
 }
 
 module.exports = {
-    replaceWithSecrets,
+    magic: magic,
 };

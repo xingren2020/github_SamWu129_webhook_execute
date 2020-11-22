@@ -1,14 +1,14 @@
 {
-    "name": "myactions",
+    "name": "no",
     "version": "1.0.0",
-    "description": "sign everything",
+    "description": "",
     "main": "app.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/sazn1314/MyActions.git"
+        "url": ""
     },
     "keywords": [
         "sign"
@@ -16,9 +16,9 @@
     "author": "sazs",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/sazn1314/MyActions/issues"
+        "url": ""
     },
-    "homepage": "https://github.com/sazn1314/MyActions#readme",
+    "homepage": "",
     "dependencies": {
         "request": "^2.88.2",
         "request-promise": "^4.2.5",

@@ -25,7 +25,7 @@ jobs:
                   npm install
             - name: "运行【泡泡大战】"
               run: |
-                  node onlyOneExecute.js
+                  node execute.js
               env:
                   JD_COOKIE: ${{ secrets.JD_COOKIE }}
                   JD_DEBUG: ${{ secrets.JD_DEBUG }}

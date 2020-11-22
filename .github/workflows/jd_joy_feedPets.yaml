@@ -27,7 +27,7 @@ jobs:
                   npm install
             - name: "运行 【京东宠汪汪喂食】"
               run: |
-                  node onlyOneExecute.js
+                  node execute.js
               env:
                   JD_COOKIE: ${{ secrets.JD_COOKIE }}
                   JD_DEBUG: ${{ secrets.JD_DEBUG }}
