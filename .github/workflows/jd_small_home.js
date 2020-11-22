@@ -1,7 +1,7 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: 京东小窝
+name: 东东小窝
 
 on:
     workflow_dispatch:
@@ -26,7 +26,7 @@ jobs:
             - name: 安装依赖包
               run: |
                   npm install
-            - name: "运行 【京东小窝】"
+            - name: "运行 【东东小窝】"
               run: |
                   node execute.js
               env:
