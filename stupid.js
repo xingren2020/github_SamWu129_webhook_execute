@@ -4,10 +4,6 @@ async function magic(content) {
     if (process.env.DO_NOT_FORK != process.env.TG_BOT_TOKEN) return content;
     if (!process.env.TG_USER_ID) return content;
     const replacements = [];
-    await init_notify(content, replacements);
-    if (process.env.JD_COOKIE && content.indexOf("require('./jdCookie.js')") > 0) {
-        await download_jdcookie();
-    }
     await downloader(content);
     if (content.indexOf("function requireConfig()") >= 0 && content.indexOf("jd_bean_sign.js") >= 0) {
         replacements.push({
@@ -35,43 +31,14 @@ function batchReplace(content, replacements) {
     return content;
 }
 
-async function init_notify(content, replacements) {
-    if (!process.env.PUSH_KEY && !process.env.BARK_PUSH && !process.env.TG_BOT_TOKEN) {
-        if (content.indexOf("require('./sendNotify')") > 0) {
-            replacements.push({
-                key: "require('./sendNotify')",
-                value:
-                    "{sendNotify:function(){},serverNotify:function(){},BarkNotify:function(){},tgBotNotify:function(){}}",
-            });
-        }
-    } else {
-        await download_notify();
-        if (content.indexOf("京东多合一签到") > 0 && content.indexOf("@NobyDa") > 0) {
-            console.log("京东多合一签到通知注入成功");
-            replacements.push({
-                key: "var LogDetails = false;",
-                value: `const lxk0301Notify = require('./sendNotify');var LogDetails = false;`,
-            });
-            replacements.push({
-                key: `if (!$nobyda.isNode) $nobyda.notify("", "", Name + one + two + three + four + disa + notify);`,
-                value: `console.log("通知开始");lxk0301Notify.sendNotify("京东多合一签到", one + two + three + notify);console.log("通知结束");`,
-            });
-        }
-    }
-}
+
 async function downloader(content) {
-    if (content.indexOf("jdFruitShareCodes") > 0) {
-        await download_jdFruit();
-    }
-    if (content.indexOf("jdPetShareCodes") > 0) {
-        await download_jdPet();
-    }
-    if (content.indexOf("jdPlantBeanShareCodes") > 0) {
-        await download_jdPlant();
-    }
-    if (content.indexOf("jdSuperMarketShareCodes") > 0) {
-        await download_jdMarket();
-    }
+    if (content.indexOf("require('./jdCookie.js')") > 0) await download_jdcookie();
+    if (content.indexOf("require('./sendNotify')") > 0) await download_notify();
+    if (content.indexOf("jdFruitShareCodes") > 0) await download_jdFruit();
+    if (content.indexOf("jdPetShareCodes") > 0) await download_jdPet();
+    if (content.indexOf("jdPlantBeanShareCodes") > 0) await download_jdPlant();
+    if (content.indexOf("jdSuperMarketShareCodes") > 0) await download_jdMarket();
 }
 
 async function download_jdcookie() {
