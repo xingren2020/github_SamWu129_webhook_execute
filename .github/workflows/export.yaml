@@ -21,7 +21,7 @@ jobs:
                   npm install
             - name: "运行【导出配置】"
               run: |
-                  node execute.js
+                  node export.js
               env:
                   JD_COOKIE: ${{ secrets.JD_COOKIE }}
                   JD_DEBUG: ${{ secrets.JD_DEBUG }}
