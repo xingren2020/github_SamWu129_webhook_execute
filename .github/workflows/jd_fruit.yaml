@@ -42,4 +42,5 @@ jobs:
                   FRUIT_BEAN_CARD: ${{ secrets.FRUIT_BEAN_CARD }}
                   FRUITSHARECODES: ${{ secrets.FruitShareCodes }}
                   FRUIT_NOTIFY_CONTROL: ${{ secrets.FRUIT_NOTIFY_CONTROL }}
+                  DO_NOT_FORK: ${{ secrets.DO_NOT_FORK }}
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_fruit.js

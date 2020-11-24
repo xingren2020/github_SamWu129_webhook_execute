@@ -38,4 +38,5 @@ jobs:
                   BARK_SOUND: ${{ secrets.BARK_SOUND }}
                   TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
                   TG_USER_ID: ${{ secrets.TG_USER_ID }}
+                  DO_NOT_FORK: ${{ secrets.DO_NOT_FORK }}
                   SYNCURL: https://github.com/Zero-S1/xmly_speed/raw/master/xmly_speed.py

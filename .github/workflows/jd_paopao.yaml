@@ -36,4 +36,5 @@ jobs:
                   TG_USER_ID: ${{ secrets.TG_USER_ID }}
                   DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
                   DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+                  DO_NOT_FORK: ${{ secrets.DO_NOT_FORK }}
                   SYNCURL: https://github.com/799953468/Quantumult-X/raw/master/Scripts/JD/jd_paopao.js

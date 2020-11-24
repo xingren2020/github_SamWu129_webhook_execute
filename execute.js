@@ -3,39 +3,25 @@ const fs = require("fs");
 const axios = require("axios");
 const stupid = require("./stupid");
 
-// 公共变量
-const Secrets = {
-    JD_COOKIE: process.env.JD_COOKIE,
-    SyncUrl: process.env.SYNCURL,
-    PUSH_KEY: process.env.PUSH_KEY, 
-    BARK_PUSH: process.env.BARK_PUSH,
-    TG_BOT_TOKEN: process.env.TG_BOT_TOKEN,
-    TG_USER_ID: process.env.TG_USER_ID,
-    MarketCoinToBeanCount: process.env.JDMarketCoinToBeans,
-    JoyFeedCount: process.env.JDJoyFeedCount,
-    FruitShareCodes: process.env.FruitShareCodes,
-    Unsubscribe: process.env.UNSUBSCRIBE,
-};
-
 async function changeFiele() {
-    let response = await axios.get(Secrets.SyncUrl);
+    let response = await axios.get(process.env.SYNCURL);
     let content = response.data;
-    content = await stupid.magic(content, Secrets);
+    content = await stupid.magic(content);
     await fs.writeFileSync("./execute.js", content, "utf8");
     console.log("替换变量完毕");
 }
 
 async function start() {
     console.log(`当前执行时间:${new Date().toString()}`);
-    if (!Secrets.JD_COOKIE) {
+    if (!process.env.JD_COOKIE) {
         console.log("请填写 JD_COOKIE 后在继续");
         return;
     }
-    if (!Secrets.SyncUrl) {
+    if (!process.env.SYNCURL) {
         console.log("请填写 SYNCURL 后在继续");
         return;
     }
-    console.log(`当前共${Secrets.JD_COOKIE.split("&").length}个账号需要签到`);
+    console.log(`当前共${process.env.JD_COOKIE.split("&").length}个账号需要签到`);
     try {
         await changeFiele();
         await exec("node execute.js", { stdio: "inherit" });

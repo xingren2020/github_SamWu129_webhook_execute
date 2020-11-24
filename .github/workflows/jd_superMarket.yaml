@@ -43,4 +43,5 @@ jobs:
                   jdBusinessCircleJump: ${{ secrets.BUSINESS_CIRCLE_JUMP }}
                   SUPERMARKET_SHARECODES: ${{ secrets.SUPERMARKET_SHARECODES }}
                   jdSuperMarketLottery: ${{ secrets.SUPERMARKET_LOTTERY }}
+                  DO_NOT_FORK: ${{ secrets.DO_NOT_FORK }}
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_superMarket.js

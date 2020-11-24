@@ -41,4 +41,5 @@ jobs:
                   DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
                   JOY_FEED_COUNT: ${{ secrets.JOY_FEED_COUNT }}
                   JOY_RUN_FLAG: ${{ secrets.JOY_RUN_FLAG }}
+                  DO_NOT_FORK: ${{ secrets.DO_NOT_FORK }}
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_joy.js

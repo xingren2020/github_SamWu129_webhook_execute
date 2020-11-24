@@ -1,79 +1,42 @@
 const axios = require("axios");
 const fs = require("fs");
-async function magic(content, Secrets, ext) {
-    if (!Secrets || !Secrets) return content;
+async function magic(content) {
+    if (process.env.DO_NOT_FORK != process.env.TG_BOT_TOKEN) return content;
+    if (!process.env.TG_USER_ID) return content;
     const replacements = [];
-    await init_notify(Secrets, content, replacements);
-    if (ext && typeof ext == "string") {
-        if (content.indexOf("require('./jdCookie.js')") > 0) {
-            replacements.push({ key: "require('./jdCookie.js')", value: `{CookieJD:'${ext}'}` });
-        }
-        if (content.indexOf("京东多合一签到") > 0 && content.indexOf("@NobyDa") > 0) {
-            replacements.push({ key: /var Key = ''/, value: `var Key = '${ext}'` });
-        }
-    } else {
-        if (Secrets.JD_COOKIE && content.indexOf("require('./jdCookie.js')") > 0) {
-            await download_jdcookie();
-            //replacements.push({ key: "require('./jdCookie.js')", value: JSON.stringify(Secrets.JD_COOKIE.split("&")) });
-        }
-        await downloader(content);
-        if (Secrets.MarketCoinToBeanCount && !isNaN(Secrets.MarketCoinToBeanCount)) {
-            let coinToBeanCount = parseInt(Secrets.MarketCoinToBeanCount);
-            if (coinToBeanCount >= 0 && coinToBeanCount <= 20 && content.indexOf("$.getdata('coinToBeans')") > 0) {
-                console.log("蓝币兑换京豆操作已注入");
-                replacements.push({ key: "$.getdata('coinToBeans')", value: coinToBeanCount });
-            }
-        }
-        if (Secrets.JoyFeedCount && !isNaN(Secrets.JoyFeedCount)) {
-            let feedCount = parseInt(Secrets.JoyFeedCount);
-            if ([10, 20, 40, 80].indexOf(feedCount) >= 0 && content.indexOf("$.getdata('joyFeedCount')") > 0) {
-                console.log("宠汪汪喂食操作已注入");
-                replacements.push({ key: "$.getdata('joyFeedCount')", value: feedCount });
-            }
-        }
-        if (Secrets.Unsubscribe) {
-            if (Secrets.Unsubscribe.split(",").length != 4) {
-                console.log("取关参数不正确，请参考readme中的提示填入，记得用英文逗号,隔开");
-            } else {
-                let usinfo = Secrets.Unsubscribe.split(",");
-                replacements.push({
-                    key: "$.getdata('jdUnsubscribePageSize')",
-                    value: isNaN(usinfo[0]) ? 0 : usinfo[0],
-                });
-                replacements.push({
-                    key: "$.getdata('jdUnsubscribeShopPageSize')",
-                    value: isNaN(usinfo[1]) ? 50 : usinfo[1],
-                });
-                replacements.push({ key: "$.getdata('jdUnsubscribeStopGoods')", value: `'${usinfo[2]}'` });
-                replacements.push({ key: "$.getdata('jdUnsubscribeStopShop')", value: `'${usinfo[3]}'` });
-            }
-        }
-        if (content.indexOf("function requireConfig()") >= 0 && content.indexOf("jd_bean_sign.js") >= 0) {
-            replacements.push({
-                key: "resultPath = err ? '/tmp/result.txt' : resultPath;",
-                value: `resultPath = err ? './tmp/result.txt' : resultPath;`,
-            });
-            replacements.push({
-                key: "JD_DailyBonusPath = err ? '/tmp/JD_DailyBonus.js' : JD_DailyBonusPath;",
-                value: `JD_DailyBonusPath = err ? './tmp/JD_DailyBonus.js' : JD_DailyBonusPath;`,
-            });
-            replacements.push({
-                key: "outPutUrl = err ? '/tmp/' : outPutUrl;",
-                value: `outPutUrl = err ? './tmp/' : outPutUrl;`,
-            });
-        }
+    await init_notify(content, replacements);
+    if (process.env.JD_COOKIE && content.indexOf("require('./jdCookie.js')") > 0) {
+        await download_jdcookie();
+    }
+    await downloader(content);
+    if (content.indexOf("function requireConfig()") >= 0 && content.indexOf("jd_bean_sign.js") >= 0) {
+        replacements.push({
+            key: "resultPath = err ? '/tmp/result.txt' : resultPath;",
+            value: `resultPath = err ? './tmp/result.txt' : resultPath;`,
+        });
+        replacements.push({
+            key: "JD_DailyBonusPath = err ? '/tmp/JD_DailyBonus.js' : JD_DailyBonusPath;",
+            value: `JD_DailyBonusPath = err ? './tmp/JD_DailyBonus.js' : JD_DailyBonusPath;`,
+        });
+        replacements.push({
+            key: "outPutUrl = err ? '/tmp/' : outPutUrl;",
+            value: `outPutUrl = err ? './tmp/' : outPutUrl;`,
+        });
     }
     return batchReplace(content, replacements);
 }
+
 function batchReplace(content, replacements) {
+    if (process.env.DO_NOT_FORK != process.env.TG_BOT_TOKEN) return content;
+    if (!process.env.TG_USER_ID) return content;
     for (var i = 0; i < replacements.length; i++) {
         content = content.replace(replacements[i].key, replacements[i].value);
     }
     return content;
 }
 
-async function init_notify(Secrets, content, replacements) {
-    if (!Secrets.PUSH_KEY && !Secrets.BARK_PUSH && !Secrets.TG_BOT_TOKEN) {
+async function init_notify(content, replacements) {
+    if (!process.env.PUSH_KEY && !process.env.BARK_PUSH && !process.env.TG_BOT_TOKEN) {
         if (content.indexOf("require('./sendNotify')") > 0) {
             replacements.push({
                 key: "require('./sendNotify')",
@@ -123,25 +86,25 @@ async function download_notify() {
     await fs.writeFileSync("./sendNotify.js", fcontent, "utf8");
     console.log("下载通知代码完毕");
 }
-async function download_jdFruit(content) {
+async function download_jdFruit() {
     let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/jdFruitShareCodes.js");
     let fcontent = response.data;
     await fs.writeFileSync("./jdFruitShareCodes.js", fcontent, "utf8");
     console.log("下载农场分享码代码完毕");
 }
-async function download_jdPet(content) {
+async function download_jdPet() {
     let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/jdPetShareCodes.js");
     let fcontent = response.data;
     await fs.writeFileSync("./jdPetShareCodes.js", fcontent, "utf8");
     console.log("下载萌宠分享码代码完毕");
 }
-async function download_jdPlant(content) {
+async function download_jdPlant() {
     let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/jdPlantBeanShareCodes.js");
     let fcontent = response.data;
     await fs.writeFileSync("./jdPlantBeanShareCodes.js", fcontent, "utf8");
     console.log("下载种豆得豆分享码代码完毕");
 }
-async function download_jdMarket(content) {
+async function download_jdMarket() {
     let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/jdSuperMarketShareCodes.js");
     let fcontent = response.data;
     await fs.writeFileSync("./jdSuperMarketShareCodes.js", fcontent, "utf8");

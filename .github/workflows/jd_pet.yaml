@@ -41,4 +41,5 @@ jobs:
                   DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
                   DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
                   PET_NOTIFY_CONTROL: ${{ secrets.PET_NOTIFY_CONTROL }}
+                  DO_NOT_FORK: ${{ secrets.DO_NOT_FORK }}
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_pet.js
