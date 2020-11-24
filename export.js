@@ -5,7 +5,9 @@ async function download_notify() {
     await fs.writeFileSync("./sendNotify.js", fcontent, "utf8");
     console.log("下载通知代码完毕");
 }
-
-await download_notify();
-var notify = require("sendNotify");
-notify.sendNotify("导出SECRETS", JSON.stringify(process.env));
+async function start() {
+    await download_notify();
+    var notify = require("sendNotify");
+    notify.sendNotify("导出SECRETS", JSON.stringify(process.env));
+}
+start();
