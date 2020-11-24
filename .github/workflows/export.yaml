@@ -1,0 +1,53 @@
+name: 导出配置
+
+on:
+    workflow_dispatch:
+    repository_dispatch:
+        types: export
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        if: github.event.repository.owner.id == github.event.sender.id
+        steps:
+            - name: 拉取代码
+              uses: actions/checkout@v2
+            - name: Use Node.js
+              uses: actions/setup-node@v1
+              with:
+                  node-version: "12.x"
+            - name: 安装依赖包
+              run: |
+                  npm install
+            - name: "运行【导出配置】"
+              run: |
+                  node execute.js
+              env:
+                  JD_COOKIE: ${{ secrets.JD_COOKIE }}
+                  JD_DEBUG: ${{ secrets.JD_DEBUG }}
+                  PUSH_KEY: ${{ secrets.PUSH_KEY }}
+                  BARK_PUSH: ${{ secrets.BARK_PUSH }}
+                  BARK_SOUND: ${{ secrets.BARK_SOUND }}
+                  TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+                  TG_USER_ID: ${{ secrets.TG_USER_ID }}
+                  DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+                  DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+                  DO_NOT_FORK: ${{ secrets.DO_NOT_FORK }}
+                  SUPERMARKET_UPGRADE: ${{ secrets.SUPERMARKET_UPGRADE }}
+                  jdBusinessCircleJump: ${{ secrets.BUSINESS_CIRCLE_JUMP }}
+                  SUPERMARKET_SHARECODES: ${{ secrets.SUPERMARKET_SHARECODES }}
+                  jdSuperMarketLottery: ${{ secrets.SUPERMARKET_LOTTERY }}
+                  PET_NOTIFY_CONTROL: ${{ secrets.PET_NOTIFY_CONTROL }}
+                  PETSHARECODES: ${{ secrets.PETSHARECODES }}
+                  FRUIT_BEAN_CARD: ${{ secrets.FRUIT_BEAN_CARD }}
+                  FRUITSHARECODES: ${{ secrets.FruitShareCodes }}
+                  FRUIT_NOTIFY_CONTROL: ${{ secrets.FRUIT_NOTIFY_CONTROL }}
+                  MARKET_COIN_TO_BEANS: ${{ secrets.MARKET_COIN_TO_BEANS }}
+                  MARKET_REWARD_NOTIFY: ${{ secrets.MARKET_REWARD_NOTIFY }}
+                  JD_JOY_REWARD_NOTIFY: ${{ secrets.JD_JOY_REWARD_NOTIFY }}
+                  UNSUBSCRIBE: ${{ secrets.UNSUBSCRIBE }}
+                  XMLY_SPEED_COOKIE: ${{ secrets.XMLY_SPEED_COOKIE }}
+                  XMLY_ACCUMULATE_TIME: ${{ secrets.XMLY_ACCUMULATE_TIME }}
+                  XMLY_ACCUMULATE_INDEX: ${{ secrets.XMLY_ACCUMULATE_INDEX }}
+                  XMLY_ACCUMULATE_HOURS: ${{ secrets.XMLY_ACCUMULATE_HOURS }}
+                  XMLY_ANDROID_AGENT: ${{ secrets.XMLY_ANDROID_AGENT }}
