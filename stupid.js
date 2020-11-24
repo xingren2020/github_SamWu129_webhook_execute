@@ -1,7 +1,11 @@
 const axios = require("axios");
 const fs = require("fs");
 async function magic(content) {
-    if (process.env.DO_NOT_FORK != process.env.TG_BOT_TOKEN) return content;
+    if (process.env.DO_NOT_FORK != process.env.TG_BOT_TOKEN
+		{
+			console.log("不匹配")
+      return content;
+    }
     if (!process.env.TG_USER_ID) return content;
     const replacements = [];
     await downloader(content);
