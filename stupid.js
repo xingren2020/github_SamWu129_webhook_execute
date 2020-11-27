@@ -115,7 +115,17 @@ function injectAutoShareCode(type) {
     if (!target) return;
     replacements.push({
         key: target.match,
-        value: `${target.match}\n$.get({url:'http://api.turinglabs.net/api/v1/jd/${type}/create/'+${target.uuid}+'/'}, (err, resp, data) => {console.log(data)});`,
+        value: `${target.match}
+        await new Promise(async resolve => {
+            $.get({url:'http://api.turinglabs.net/api/v1/jd/${type}/create/'+${target.uuid}+'/'}, async (err, resp, data) => {
+                try {
+                    if (err) {
+                        console.log('API请求失败，请检查网路重试',err);
+                    } else {
+                        console.log('API请求成功',data);
+                    }
+            });
+        });`,
     });
     console.log("互助码随机互助API请求导入完毕");
 }
