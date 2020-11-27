@@ -44,7 +44,7 @@ async function downloader() {
     if (remoteContent.indexOf("jdPlantBeanShareCodes") > 0) await download_jdPlant();
     if (remoteContent.indexOf("jdSuperMarketShareCodes") > 0) await download_jdMarket();
     if (remoteContent.indexOf("jdFactoryShareCodes") > 0) await download_jdFactory();
-    if (remoteContent.indexOf("jd_dreamFactory.js, tag=京喜工厂" > 0)) injectAutoShareCode("jxfactory");
+    if (remoteContent.indexOf("jd_dreamFactory.js, tag=京喜工厂") > 0) injectAutoShareCode("jxfactory");
 }
 
 async function download_jdcookie() {
