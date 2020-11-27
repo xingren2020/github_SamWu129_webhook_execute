@@ -41,7 +41,7 @@ async function downloader(content) {
     if (content.indexOf("jdPetShareCodes") > 0) await download_jdPet();
     if (content.indexOf("jdPlantBeanShareCodes") > 0) await download_jdPlant();
     if (content.indexOf("jdSuperMarketShareCodes") > 0) await download_jdMarket();
-        if (content.indexOf("jdFactoryShareCodes") > 0) await download_jdFactory();
+    if (content.indexOf("jdFactoryShareCodes") > 0) await download_jdFactory();
 }
 
 async function download_jdcookie() {
@@ -80,12 +80,20 @@ async function download_jdMarket() {
     await fs.writeFileSync("./jdSuperMarketShareCodes.js", fcontent, "utf8");
     console.log("下载京小超分享码代码完毕");
 }
-
 async function download_jdFactory() {
     let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/jdFactoryShareCodes.js");
     let fcontent = response.data;
     await fs.writeFileSync("./jdFactoryShareCodes.js", fcontent, "utf8");
     console.log("下载京小超分享码代码完毕");
+}
+async function injectAutoShareCode(type) {
+    var pointer = {
+        ddfactory: { uuid: "$.myPlantUuid", match: "console.log(`\n【您的互助码plantUuid】 ${$.myPlantUuid}\n`);" },
+        jxfactory: { uuid: "", match: "" },
+        bean: { uuid: "", match: "" },
+        farm: { uuid: "", match: "" },
+        pet: { uuid: "", match: "" },
+    };
 }
 
 module.exports = {
