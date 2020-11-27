@@ -99,17 +99,17 @@ function injectAutoShareCode(type) {
     let pointer = {
         ddfactory: {
             uuid: "item.assistTaskDetailVo.taskToken",
-            match: "console.log(`\n您的${$.name}好友助力邀请码：${item.assistTaskDetailVo.taskToken}\n`)",
+            match: "console.log(`\\n您的${$.name}好友助力邀请码：${item.assistTaskDetailVo.taskToken}\\n`)",
         },
         jxfactory: { uuid: "data.user.encryptPin", match: "console.log(`分享码: ${data.user.encryptPin}`);" },
-        bean: { uuid: "$.myPlantUuid", match: "console.log(`\n【您的互助码plantUuid】 ${$.myPlantUuid}\n`);" },
+        bean: { uuid: "$.myPlantUuid", match: "console.log(`\\n【您的互助码plantUuid】 ${$.myPlantUuid}\\n`);" },
         farm: {
             uuid: "$.farmInfo.farmUserPro.shareCode",
-            match: "console.log(`\n【您的互助码shareCode】 ${$.farmInfo.farmUserPro.shareCode}\n`);",
+            match: "console.log(`\\n【您的互助码shareCode】 ${$.farmInfo.farmUserPro.shareCode}\\n`);",
         },
         pet: {
             uuid: "$.petInfo.shareCode",
-            match: "console.log(`\n【您的互助码shareCode】 ${$.petInfo.shareCode}\n`);",
+            match: "console.log(`\\n【您的互助码shareCode】 ${$.petInfo.shareCode}\\n`);",
         },
     };
     let target = pointer[type];
