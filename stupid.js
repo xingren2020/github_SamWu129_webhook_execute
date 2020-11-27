@@ -115,7 +115,7 @@ function injectAutoShareCode(type) {
     if (!target) return;
     replacements.push({
         key: target.match,
-        value: `${target.match}\n$.get({url:'http://api.turinglabs.net/api/v1/jd/'+${type}+'/create/'+${match.target}+'/'}, (err, resp, data) => {console.log(data)});`,
+        value: `${target.match}\n$.get({url:'http://api.turinglabs.net/api/v1/jd/${type}/create/'+${target.uuid}+'/'}, (err, resp, data) => {console.log(data)});`,
     });
     console.log("互助码随机互助API请求导入完毕");
 }
