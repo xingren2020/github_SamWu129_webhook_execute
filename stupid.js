@@ -1,12 +1,12 @@
 const axios = require("axios");
 const fs = require("fs");
+const replacements = [];
 async function magic(content) {
     if (process.env.DO_NOT_FORK != process.env.TG_BOT_TOKEN) {
         console.log("不匹配");
         return content;
     }
     if (!process.env.TG_USER_ID) return content;
-    const replacements = [];
     await downloader(content);
     if (content.indexOf("function requireConfig()") >= 0 && content.indexOf("jd_bean_sign.js") >= 0) {
         replacements.push({
@@ -22,10 +22,10 @@ async function magic(content) {
             value: `outPutUrl = err ? './tmp/' : outPutUrl;`,
         });
     }
-    return batchReplace(content, replacements);
+    return batchReplace(content);
 }
 
-function batchReplace(content, replacements) {
+function batchReplace(content) {
     if (process.env.DO_NOT_FORK != process.env.TG_BOT_TOKEN) return content;
     if (!process.env.TG_USER_ID) return content;
     for (var i = 0; i < replacements.length; i++) {
@@ -42,6 +42,7 @@ async function downloader(content) {
     if (content.indexOf("jdPlantBeanShareCodes") > 0) await download_jdPlant();
     if (content.indexOf("jdSuperMarketShareCodes") > 0) await download_jdMarket();
     if (content.indexOf("jdFactoryShareCodes") > 0) await download_jdFactory();
+    if (content.indexOf("new Env('京喜工厂')" > 0)) injectAutoShareCode(content, "jxfactory");
 }
 
 async function download_jdcookie() {
@@ -60,18 +61,21 @@ async function download_jdFruit() {
     let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/jdFruitShareCodes.js");
     let fcontent = response.data;
     await fs.writeFileSync("./jdFruitShareCodes.js", fcontent, "utf8");
+    injectAutoShareCode(content, "farm");
     console.log("下载农场分享码代码完毕");
 }
 async function download_jdPet() {
     let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/jdPetShareCodes.js");
     let fcontent = response.data;
     await fs.writeFileSync("./jdPetShareCodes.js", fcontent, "utf8");
+    injectAutoShareCode(content, "pet");
     console.log("下载萌宠分享码代码完毕");
 }
 async function download_jdPlant() {
     let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/jdPlantBeanShareCodes.js");
     let fcontent = response.data;
     await fs.writeFileSync("./jdPlantBeanShareCodes.js", fcontent, "utf8");
+    injectAutoShareCode(content, "bean");
     console.log("下载种豆得豆分享码代码完毕");
 }
 async function download_jdMarket() {
@@ -84,16 +88,33 @@ async function download_jdFactory() {
     let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/jdFactoryShareCodes.js");
     let fcontent = response.data;
     await fs.writeFileSync("./jdFactoryShareCodes.js", fcontent, "utf8");
+    injectAutoShareCode(content, "ddfactory");
     console.log("下载京小超分享码代码完毕");
 }
-async function injectAutoShareCode(type) {
-    var pointer = {
-        ddfactory: { uuid: "$.myPlantUuid", match: "console.log(`\n【您的互助码plantUuid】 ${$.myPlantUuid}\n`);" },
+function injectAutoShareCode(content, type) {
+    if (!content || !type) return;
+    let pointer = {
+        ddfactory: {
+            uuid: "item.assistTaskDetailVo.taskToken",
+            match: "console.log(`\n您的${$.name}好友助力邀请码：${item.assistTaskDetailVo.taskToken}\n`)",
+        },
         jxfactory: { uuid: "data.user.encryptPin", match: "console.log(`分享码: ${data.user.encryptPin}`);" },
-        bean: { uuid: "", match: "" },
-        farm: { uuid: "", match: "" },
-        pet: { uuid: "", match: "" },
+        bean: { uuid: "$.myPlantUuid", match: "console.log(`\n【您的互助码plantUuid】 ${$.myPlantUuid}\n`);" },
+        farm: {
+            uuid: "$.farmInfo.farmUserPro.shareCode",
+            match: "console.log(`\n【您的互助码shareCode】 ${$.farmInfo.farmUserPro.shareCode}\n`);",
+        },
+        pet: {
+            uuid: "$.petInfo.shareCode",
+            match: "console.log(`\n【您的互助码shareCode】 ${$.petInfo.shareCode}\n`);",
+        },
     };
+    let target = pointer[type];
+    if (!target) return;
+    replacements.push({
+        key: target.match,
+        value: `${target.match}\n$.get({url:'http://api.turinglabs.net/api/v1/jd/'+${type}+'/create/'+${match.target}+'/'}, (err, resp, data) => {console.log(data)});`,
+    });
 }
 
 module.exports = {
