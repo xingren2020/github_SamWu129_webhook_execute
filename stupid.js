@@ -44,7 +44,7 @@ async function downloader() {
     if (remoteContent.indexOf("jdPlantBeanShareCodes") > 0) await download_jdPlant();
     if (remoteContent.indexOf("jdSuperMarketShareCodes") > 0) await download_jdMarket();
     if (remoteContent.indexOf("jdFactoryShareCodes") > 0) await download_jdFactory();
-    if (remoteContent.indexOf("new Env('京喜工厂')" > 0)) injectAutoShareCode("jxfactory");
+    if (remoteContent.indexOf("jd_dreamFactory.js, tag=京喜工厂" > 0)) injectAutoShareCode("jxfactory");
 }
 
 async function download_jdcookie() {
@@ -116,8 +116,8 @@ function injectAutoShareCode(type) {
     replacements.push({
         key: target.match,
         value: `${target.match}
-        await new Promise(async resolve => {
-            $.get({url:'http://api.turinglabs.net/api/v1/jd/${type}/create/'+${target.uuid}+'/'}, async (err, resp, data) => {
+        await new Promise(resolve => {
+            $.get({url:'http://api.turinglabs.net/api/v1/jd/${type}/create/'+${target.uuid}+'/'}, (err, resp, data) => {
                 try {
                     if (err) {
                         console.log('API请求失败，请检查网路重试',err);
