@@ -33,6 +33,7 @@ function batchReplace() {
     for (var i = 0; i < replacements.length; i++) {
         remoteContent = remoteContent.replace(replacements[i].key, replacements[i].value);
     }
+    log(remoteContent);
     return remoteContent;
 }
 
