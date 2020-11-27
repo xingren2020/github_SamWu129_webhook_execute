@@ -91,7 +91,7 @@ async function download_jdFactory() {
     let fcontent = response.data;
     await fs.writeFileSync("./jdFactoryShareCodes.js", fcontent, "utf8");
     injectAutoShareCode("ddfactory");
-    console.log("下载京小超分享码代码完毕");
+    console.log("下载东东工厂分享码代码完毕");
 }
 function injectAutoShareCode(type) {
     if (!type) return;
@@ -124,10 +124,15 @@ function injectAutoShareCode(type) {
                     } else {
                         console.log('API请求成功',data);
                     }
+                } catch(e) {
+                    console.log('处理失败',e);
+                } finally {
+                    resolve();
+                }
             });
         });`,
     });
-    console.log("互助码随机互助API请求导入完毕");
+    console.log(`互助码-${type}-随机互助API请求导入完毕`);
 }
 
 module.exports = {
