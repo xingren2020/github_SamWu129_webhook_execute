@@ -89,7 +89,7 @@ async function download_jdFactory() {
 async function injectAutoShareCode(type) {
     var pointer = {
         ddfactory: { uuid: "$.myPlantUuid", match: "console.log(`\n【您的互助码plantUuid】 ${$.myPlantUuid}\n`);" },
-        jxfactory: { uuid: "", match: "" },
+        jxfactory: { uuid: "data.user.encryptPin", match: "console.log(`分享码: ${data.user.encryptPin}`);" },
         bean: { uuid: "", match: "" },
         farm: { uuid: "", match: "" },
         pet: { uuid: "", match: "" },
