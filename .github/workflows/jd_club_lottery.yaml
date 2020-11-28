@@ -2,8 +2,6 @@ name: 抽京豆
 
 on:
     workflow_dispatch:
-    schedule:
-        - cron: "10 16 * * *"
     watch:
         types: [started]
     repository_dispatch:

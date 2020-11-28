@@ -5,8 +5,6 @@ name: 京东抽奖机
 
 on:
     workflow_dispatch:
-    schedule:
-        - cron: "30 16 * * *"
     watch:
         types: [started]
     repository_dispatch:

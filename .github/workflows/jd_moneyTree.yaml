@@ -5,8 +5,6 @@ name: 京东摇钱树
 
 on:
     workflow_dispatch:
-    schedule:
-        - cron: "20 */3 * * *"
     watch:
         types: [started]
     repository_dispatch:

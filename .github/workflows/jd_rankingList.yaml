@@ -5,8 +5,6 @@ name: 京东排行榜
 
 on:
     workflow_dispatch:
-    schedule:
-        - cron: "45 16 * * *"
     watch:
         types: [started]
     repository_dispatch:

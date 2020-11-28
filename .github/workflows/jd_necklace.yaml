@@ -2,8 +2,6 @@ name: 京东点点券
 
 on:
     workflow_dispatch:
-    schedule:
-        - cron: "0 13,17 * * *"
     watch:
         types: [started]
     repository_dispatch:

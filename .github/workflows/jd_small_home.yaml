@@ -5,8 +5,6 @@ name: 东东小窝
 
 on:
     workflow_dispatch:
-    schedule:
-        - cron: "55 16 * * *"
     watch:
         types: [started]
     repository_dispatch:

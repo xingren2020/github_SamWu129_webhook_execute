@@ -2,12 +2,10 @@ name: 京喜工厂
 
 on:
     workflow_dispatch:
-    schedule:
-        - cron: "0 */1 * * *"
     watch:
         types: [started]
     repository_dispatch:
-        types: jd_club_lottery
+        types: jd_dreamFactory
 
 jobs:
     build:
