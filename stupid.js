@@ -45,7 +45,7 @@ async function downloader() {
     if (remoteContent.indexOf("jdPlantBeanShareCodes") > 0) await download_jdPlant();
     if (remoteContent.indexOf("jdSuperMarketShareCodes") > 0) await download_jdMarket();
     if (remoteContent.indexOf("jdFactoryShareCodes") > 0) await download_jdFactory();
-    if (remoteContent.indexOf("jd_dreamFactory.js, tag=京喜工厂") > 0) injectAutoShareCode("jxfactory");
+    if (remoteContent.indexOf("jdDreamFactoryShareCodes") > 0) await download_dreamFactory();
 }
 
 async function download_jdcookie() {
@@ -93,6 +93,13 @@ async function download_jdFactory() {
     await fs.writeFileSync("./jdFactoryShareCodes.js", fcontent, "utf8");
     injectAutoShareCode("ddfactory");
     console.log("下载东东工厂分享码代码完毕");
+}
+async function download_dreamFactory() {
+    let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/jdDreamFactoryShareCodes.js");
+    let fcontent = response.data;
+    await fs.writeFileSync("./jdDreamFactoryShareCodes.js", fcontent, "utf8");
+    injectAutoShareCode("jxfactory");
+    console.log("下载京喜工厂分享码代码完毕");
 }
 function injectAutoShareCode(type) {
     if (!type) return;
