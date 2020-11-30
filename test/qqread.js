@@ -225,7 +225,7 @@ function qqreadtask() {
     });
 }
 
-//用户名
+/** 获取用户信息 */
 function qqreadinfo() {
     return new Promise((resolve, reject) => {
         var toqqreadinfourl = {
@@ -252,7 +252,7 @@ function qqreadinfo() {
     });
 }
 
-//阅豆签到
+/** 阅豆签到 */
 function qqreadtake() {
     return new Promise((resolve, reject) => {
         var toqqreadtakeurl = {
@@ -281,7 +281,7 @@ function qqreadtake() {
     });
 }
 
-//阅读时长任务
+/** 阅读时长任务 */
 function qqreadconfig() {
     return new Promise((resolve, reject) => {
         var toqqreadconfigurl = {
@@ -311,7 +311,7 @@ function qqreadconfig() {
     });
 }
 
-//阅读时长
+/** 阅读时长 */
 function qqreadtime() {
     return new Promise((resolve, reject) => {
         var toqqreadtimeurl = {
@@ -337,7 +337,7 @@ function qqreadtime() {
     });
 }
 
-//阅读金币1
+/** 阅读金币1 */
 function qqreadssr1() {
     return new Promise((resolve, reject) => {
         var toqqreadssr1url = {
@@ -368,7 +368,7 @@ function qqreadssr1() {
     });
 }
 
-//阅读金币2
+/** 阅读金币2 */
 function qqreadssr2() {
     return new Promise((resolve, reject) => {
         var toqqreadssr2url = {
@@ -399,7 +399,7 @@ function qqreadssr2() {
     });
 }
 
-//阅读金币3
+/** 阅读金币3 */
 function qqreadssr3() {
     return new Promise((resolve, reject) => {
         var toqqreadssr3url = {
@@ -429,7 +429,7 @@ function qqreadssr3() {
     });
 }
 
-//金币签到
+/** 金币签到 */
 function qqreadsign() {
     return new Promise((resolve, reject) => {
         var toqqreadsignurl = {
@@ -458,7 +458,7 @@ function qqreadsign() {
     });
 }
 
-//金币签到翻倍
+/** 金币签到翻倍 */
 function qqreadsign2() {
     return new Promise((resolve, reject) => {
         var toqqreadsign2url = {
@@ -486,7 +486,7 @@ function qqreadsign2() {
     });
 }
 
-//每日阅读
+/** 每日阅读 */
 function qqreaddayread() {
     return new Promise((resolve, reject) => {
         var toqqreaddayreadurl = {
@@ -514,7 +514,7 @@ function qqreaddayread() {
     });
 }
 
-//视频奖励
+/** 视频奖励 */
 function qqreadvideo() {
     return new Promise((resolve, reject) => {
         var toqqreadvideourl = {
@@ -542,7 +542,7 @@ function qqreadvideo() {
     });
 }
 
-//宝箱奖励
+/** 宝箱奖励 */
 function qqreadbox() {
     return new Promise((resolve, reject) => {
         var toqqreadboxurl = {
@@ -570,7 +570,7 @@ function qqreadbox() {
     });
 }
 
-//宝箱奖励翻倍
+/** 宝箱奖励翻倍 */
 function qqreadbox2() {
     return new Promise((resolve, reject) => {
         var toqqreadbox2url = {
@@ -598,7 +598,7 @@ function qqreadbox2() {
     });
 }
 
-//本周阅读时长
+/** 本周阅读时长 */
 function qqreadwktime() {
     return new Promise((resolve, reject) => {
         var toqqreadwktimeurl = {
@@ -623,7 +623,7 @@ function qqreadwktime() {
     });
 }
 
-//本周阅读时长奖励任务
+/** 本周阅读时长奖励任务 */
 function qqreadpick() {
     return new Promise((resolve, reject) => {
         var toqqreadpickurl = {
@@ -671,7 +671,7 @@ function qqreadpick() {
         }
     });
 }
-
+/** 通知结果 */
 function showmsg() {
     console.log(tz);
 
