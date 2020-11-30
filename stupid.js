@@ -89,7 +89,7 @@ async function inject_qqread() {
     });
     replacements.push({
         key: "$.getdata(qqreadheaderKey)",
-        value: `${process.env.COOKIE_QQYD.split("\n")[1]}`,
+        value: `'${process.env.COOKIE_QQYD.split("\n")[1]}'`,
     });
     replacements.push({
         key: "$.getdata(qqreadtimeurlKey)",
@@ -97,7 +97,7 @@ async function inject_qqread() {
     });
     replacements.push({
         key: "$.getdata(qqreadtimeheaderKey)",
-        value: `${process.env.COOKIE_QQYD.split("\n")[3]}`,
+        value: `'${process.env.COOKIE_QQYD.split("\n")[3]}'`,
     });
     console.log();
     //replacements.push({ key: "qqreadsign();", value: "{qqreadsign(); qqreadsign2();}" });
@@ -108,7 +108,7 @@ async function inject_qqread() {
 async function inject_qqread_notify() {
     await downloader_notify();
     replacements.push({
-        key: "/$.msg(jsname,'',tz)/g",//global replace
+        key: "/$.msg(jsname,'',tz)/g", //global replace
         value: "{$.msg(jsname,'',tz);require('./sendNotify').sendNotify(jsname,tz)}",
     });
 }
