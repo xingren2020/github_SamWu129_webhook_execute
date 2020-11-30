@@ -675,13 +675,13 @@ function qqreadpick() {
 async function showmsg() {
     console.log(tz);
 
-    if (notifyInterval == 1) $.msg(jsname, '', tz);
+    if (notifyInterval == 1) $.msg(jsname, "", tz);
     //显示所有通知
     else if (notifyInterval == 2 && task && task.data && task.data.treasureBox && task.data.treasureBox.doneFlag == 0)
-        $.msg(jsname, '', tz);
+        $.msg(jsname, "", tz);
     //宝箱领取成功通知
     else if (notifyInterval == 3 && task && task.data && task.data.treasureBox && task.data.treasureBox.count % 15 == 0)
-        $.msg(jsname, '', tz); //宝箱每15次通知一次
+        $.msg(jsname, "", tz); //宝箱每15次通知一次
 }
 
 // prettier-ignore
