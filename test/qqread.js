@@ -95,12 +95,7 @@ var config = {};
 
 //CK运行
 
-let isGetCookie = typeof $request !== "undefined";
-if (isGetCookie) {
-    getCookie();
-} else {
-    all();
-}
+typeof $request !== "undefined" ? getCookie() : all();
 
 function getCookie() {
     if ($request && $request.url.indexOf("init") >= 0) {
