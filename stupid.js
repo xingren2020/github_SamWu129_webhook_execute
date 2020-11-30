@@ -85,7 +85,7 @@ async function inject_qqread() {
     if (remoteContent.indexOf("企鹅读书") == -1 || remoteContent.indexOf("qqread.js") == -1) return;
     replacements.push({
         key: "$.getdata(qqreadurlKey)",
-        value: `${process.env.COOKIE_QQYD.split("\n")[0]}`,
+        value: `'${process.env.COOKIE_QQYD.split("\n")[0]}'`,
     });
     replacements.push({
         key: "$.getdata(qqreadheaderKey)",
@@ -93,7 +93,7 @@ async function inject_qqread() {
     });
     replacements.push({
         key: "$.getdata(qqreadtimeurlKey)",
-        value: `${process.env.COOKIE_QQYD.split("\n")[2]}`,
+        value: `'${process.env.COOKIE_QQYD.split("\n")[2]}'`,
     });
     replacements.push({
         key: "$.getdata(qqreadtimeheaderKey)",
