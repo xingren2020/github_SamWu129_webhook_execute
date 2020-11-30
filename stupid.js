@@ -99,9 +99,6 @@ async function inject_qqread() {
         key: "$.getdata(qqreadtimeheaderKey)",
         value: `'${process.env.COOKIE_QQYD.split("\n")[3]}'`,
     });
-    console.log();
-    //replacements.push({ key: "qqreadsign();", value: "{qqreadsign(); qqreadsign2();}" });
-    //replacements.push({ key: "11&&sign.data.videoDoneFlag==0", value: "99" });
     await inject_qqread_notify();
 }
 
@@ -114,7 +111,7 @@ async function inject_qqread_notify() {
     });
     replacements.push({
         key: /\$\.msg\(jsname, ""/g,
-        value: "notify.sendNotify(jsname",
+        value: "await notify.sendNotify(jsname",
     });
 }
 
