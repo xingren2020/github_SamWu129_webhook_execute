@@ -153,7 +153,6 @@ async function all() {
 }
 /** 获取用户信息 */
 function qqreadinfo() {
-    console.log(new Date().getTime(), "qqreadinfo");
     return new Promise((resolve, reject) => {
         var toqqreadinfourl = {
             url: qqreadurlVal,
@@ -180,7 +179,6 @@ function qqreadinfo() {
 }
 /** 阅读时长任务 */
 function qqreadconfig() {
-    console.log(new Date().getTime(), "qqreadconfig");
     return new Promise((resolve, reject) => {
         var toqqreadconfigurl = {
             url: "https://mqqapi.reader.qq.com/mqq/page/config?router=%2Fpages%2Fbook-read%2Findex&options=",
@@ -210,7 +208,6 @@ function qqreadconfig() {
 }
 //任务列表
 function qqreadtask() {
-    console.log(new Date().getTime(), "qqreadtask");
     return new Promise((resolve, reject) => {
         var toqqreadtaskurl = {
             url: "https://mqqapi.reader.qq.com/mqq/red_packet/user/page?fromGuid=",
@@ -287,7 +284,6 @@ function qqreadtask() {
 }
 /** 金币签到 */
 function qqreadsign() {
-    console.log(new Date().getTime(), "qqreadsign");
     return new Promise((resolve, reject) => {
         var toqqreadsignurl = {
             url: "https://mqqapi.reader.qq.com/mqq/red_packet/user/clock_in/page",
@@ -316,7 +312,6 @@ function qqreadsign() {
 }
 /** 金币签到翻倍 */
 function qqreadsign2() {
-    console.log(new Date().getTime(), "qqreadsign2");
     return new Promise((resolve, reject) => {
         var toqqreadsign2url = {
             url: "https://mqqapi.reader.qq.com/mqq/red_packet/user/clock_in_video",
@@ -344,7 +339,6 @@ function qqreadsign2() {
 }
 /** 宝箱奖励 */
 function qqreadbox() {
-    console.log(new Date().getTime(), "qqreadbox");
     return new Promise((resolve, reject) => {
         var toqqreadboxurl = {
             url: "https://mqqapi.reader.qq.com/mqq/red_packet/user/treasure_box",
@@ -373,7 +367,6 @@ function qqreadbox() {
 
 /** 宝箱奖励翻倍 */
 function qqreadbox2() {
-    console.log(new Date().getTime(), "qqreadbox2");
     return new Promise((resolve, reject) => {
         var toqqreadbox2url = {
             url: "https://mqqapi.reader.qq.com/mqq/red_packet/user/treasure_box_video",
@@ -402,7 +395,6 @@ function qqreadbox2() {
 
 /** 阅豆签到 */
 function qqreadtake() {
-    console.log(new Date().getTime(), "qqreadtake");
     return new Promise((resolve, reject) => {
         var toqqreadtakeurl = {
             url: "https://mqqapi.reader.qq.com/mqq/sign_in/user",
@@ -432,7 +424,6 @@ function qqreadtake() {
 
 /** 阅读时长 */
 function qqreadtime() {
-    console.log(new Date().getTime(), "qqreadtime");
     return new Promise((resolve, reject) => {
         var toqqreadtimeurl = {
             url: qqreadtimeurlVal.replace(/readTime=/g, `readTime=${TIME}`),
@@ -459,7 +450,6 @@ function qqreadtime() {
 
 /** 阅读金币1 */
 function qqreadssr1() {
-    console.log(new Date().getTime(), "qqreadssr1");
     return new Promise((resolve, reject) => {
         var toqqreadssr1url = {
             url: `https://mqqapi.reader.qq.com/mqq/red_packet/user/read_time?seconds=30`,
@@ -490,7 +480,6 @@ function qqreadssr1() {
 
 /** 阅读金币2 */
 function qqreadssr2() {
-    console.log(new Date().getTime(), "qqreadssr2");
     return new Promise((resolve, reject) => {
         var toqqreadssr2url = {
             url: `https://mqqapi.reader.qq.com/mqq/red_packet/user/read_time?seconds=300`,
@@ -521,7 +510,6 @@ function qqreadssr2() {
 
 /** 阅读金币3 */
 function qqreadssr3() {
-    console.log(new Date().getTime(), "qqreadssr3");
     return new Promise((resolve, reject) => {
         var toqqreadssr3url = {
             url: `https://mqqapi.reader.qq.com/mqq/red_packet/user/read_time?seconds=1800`,
@@ -552,7 +540,6 @@ function qqreadssr3() {
 
 /** 每日阅读 */
 function qqreaddayread() {
-    console.log(new Date().getTime(), "qqreaddayread");
     return new Promise((resolve, reject) => {
         var toqqreaddayreadurl = {
             url: "https://mqqapi.reader.qq.com/mqq/red_packet/user/read_book",
@@ -581,7 +568,6 @@ function qqreaddayread() {
 
 /** 视频奖励 */
 function qqreadvideo() {
-    console.log(new Date().getTime(), "qqreadvideo");
     return new Promise((resolve, reject) => {
         var toqqreadvideourl = {
             url: "https://mqqapi.reader.qq.com/mqq/red_packet/user/watch_video",
@@ -610,7 +596,6 @@ function qqreadvideo() {
 
 /** 本周阅读时长 */
 function qqreadwktime() {
-    console.log(new Date().getTime(), "qqreadwktime");
     return new Promise((resolve, reject) => {
         var toqqreadwktimeurl = {
             url: `https://mqqapi.reader.qq.com/mqq/v1/bookShelfInit`,
@@ -636,7 +621,6 @@ function qqreadwktime() {
 
 /** 本周阅读时长奖励任务 */
 function qqreadpick() {
-    console.log(new Date().getTime(), "qqreadpick");
     return new Promise((resolve, reject) => {
         var toqqreadpickurl = {
             url: `https://mqqapi.reader.qq.com/mqq/pickPackageInit`,
@@ -687,7 +671,6 @@ function qqreadpick() {
 }
 /** 通知结果 */
 async function showmsg() {
-    console.log(new Date().getTime(), "showmsg");
     console.log(tz);
 
     if (notifyInterval == 1) $.msg(jsname, "", tz);
