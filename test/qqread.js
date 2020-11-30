@@ -685,6 +685,8 @@ function qqreadpick() {
                     resolve();
                 }
             });
+        } else {
+            resolve();
         }
     });
 }
