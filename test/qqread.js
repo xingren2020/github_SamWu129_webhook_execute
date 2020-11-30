@@ -54,8 +54,6 @@ http-request https:\/\/mqqapi\.reader\.qq\.com\/mqq\/addReadTimeWithBid? script-
 
 */
 
-var { info } = require("console");
-
 var jsname = "企鹅读书";
 var $ = Env(jsname);
 
