@@ -85,24 +85,26 @@ async function inject_qqread() {
     if (remoteContent.indexOf("企鹅读书") == -1 || remoteContent.indexOf("qqread.js") == -1) return;
     replacements.push({
         key: "$.getdata(qqreadurlKey)",
-        value: JSON.stringify(process.env.COOKIE_QQYD.split("\n")[0]),
+        value: `${process.env.COOKIE_QQYD.split("\n")[0]}`,
     });
     replacements.push({
         key: "$.getdata(qqreadheaderKey)",
-        value: JSON.stringify(process.env.COOKIE_QQYD.split("\n")[1]),
+        value: `${process.env.COOKIE_QQYD.split("\n")[1]}`,
     });
     replacements.push({
         key: "$.getdata(qqreadtimeurlKey)",
-        value: JSON.stringify(process.env.COOKIE_QQYD.split("\n")[2]),
+        value: `${process.env.COOKIE_QQYD.split("\n")[2]}`,
     });
     replacements.push({
         key: "$.getdata(qqreadtimeheaderKey)",
-        value: JSON.stringify(process.env.COOKIE_QQYD.split("\n")[3]),
+        value: `${process.env.COOKIE_QQYD.split("\n")[3]}`,
     });
+    console.log();
     //replacements.push({ key: "qqreadsign();", value: "{qqreadsign(); qqreadsign2();}" });
     //replacements.push({ key: "11&&sign.data.videoDoneFlag==0", value: "99" });
     await inject_qqread_notify();
 }
+
 async function inject_qqread_notify() {
     await downloader_notify();
     replacements.push({
