@@ -672,7 +672,7 @@ function qqreadpick() {
     });
 }
 /** 通知结果 */
-function showmsg() {
+async function showmsg() {
     console.log(tz);
 
     if (notifyInterval == 1) $.msg(jsname, "", tz);
