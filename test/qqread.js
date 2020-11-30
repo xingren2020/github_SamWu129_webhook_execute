@@ -63,7 +63,7 @@ console.log(
     })} =========\n`
 );
 
-const logs = 0; //0为关闭日志，1为开启
+const logs = true; //0为关闭日志，1为开启
 const notifyInterval = 2; //0为关闭通知，1为所有通知，2为宝箱领取成功通知，3为宝箱每15次通知一次
 
 const jbid = 1; //换号则修改这个值,默认账号1
