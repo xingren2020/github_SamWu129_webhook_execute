@@ -6,8 +6,8 @@ const stupid = require("./stupid");
 async function changeFiele() {
     let response = await axios.get(process.env.SYNCURL);
     let content = response.data;
-    content = await stupid.magic(content);
-    await fs.writeFileSync("./execute.js", content, "utf8");
+    content = await stupid.inject(content);
+    await fs.writeFileSync("./executeOnce.js", content, "utf8");
     console.log("替换变量完毕");
 }
 
@@ -25,7 +25,7 @@ console.log(`北京时间 (UTC+08)：${new Date(new Date().getTime() + 8 * 60 * 
     console.log(`当前共${process.env.JD_COOKIE.split("&").length}个账号需要签到`);
     try {
         await changeFiele();
-        await exec("node execute.js", { stdio: "inherit" });
+        await exec("node executeOnce.js", { stdio: "inherit" });
     } catch (e) {
         console.log("执行异常:" + e);
     }

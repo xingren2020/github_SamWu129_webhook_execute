@@ -2,14 +2,23 @@ const axios = require("axios");
 const fs = require("fs");
 const replacements = [];
 var remoteContent;
-async function magic(content) {
+async function init(content) {
     remoteContent = content;
     if (process.env.DO_NOT_FORK != process.env.TG_BOT_TOKEN) {
         console.log("不匹配");
         return remoteContent;
     }
     if (!process.env.TG_USER_ID) return remoteContent;
-    await downloader(remoteContent);
+    await inject();
+    return batchReplace(remoteContent);
+}
+//#region 注入代码
+async function inject() {
+    await inject_jd();
+    await inject_qqread();
+}
+
+async function inject_jd() {
     if (remoteContent.indexOf("function requireConfig()") >= 0 && remoteContent.indexOf("jd_bean_sign.js") >= 0) {
         replacements.push({
             key: "resultPath = err ? '/tmp/result.txt' : resultPath;",
@@ -24,84 +33,11 @@ async function magic(content) {
             value: `outPutUrl = err ? './tmp/' : outPutUrl;`,
         });
     }
-    return batchReplace(remoteContent);
+    await downloader_jd();
+    await downloader_notify();
 }
 
-function batchReplace() {
-    if (process.env.DO_NOT_FORK != process.env.TG_BOT_TOKEN) return remoteContent;
-    if (!process.env.TG_USER_ID) return remoteContent;
-    for (var i = 0; i < replacements.length; i++) {
-        remoteContent = remoteContent.replace(replacements[i].key, replacements[i].value);
-    }
-    // console.log(remoteContent);
-    return remoteContent;
-}
-
-async function downloader() {
-    if (remoteContent.indexOf("require('./jdCookie.js')") > 0) await download_jdcookie();
-    if (remoteContent.indexOf("require('./sendNotify')") > 0) await download_notify();
-    if (remoteContent.indexOf("jdFruitShareCodes") > 0) await download_jdFruit();
-    if (remoteContent.indexOf("jdPetShareCodes") > 0) await download_jdPet();
-    if (remoteContent.indexOf("jdPlantBeanShareCodes") > 0) await download_jdPlant();
-    if (remoteContent.indexOf("jdSuperMarketShareCodes") > 0) await download_jdMarket();
-    if (remoteContent.indexOf("jdFactoryShareCodes") > 0) await download_jdFactory();
-    if (remoteContent.indexOf("jdDreamFactoryShareCodes") > 0) await download_dreamFactory();
-}
-
-async function download_jdcookie() {
-    let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/jdCookie.js");
-    let fcontent = response.data;
-    await fs.writeFileSync("./jdCookie.js", fcontent, "utf8");
-    console.log("下载京东cookie解析完毕");
-}
-async function download_notify() {
-    let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/sendNotify.js");
-    let fcontent = response.data;
-    await fs.writeFileSync("./sendNotify.js", fcontent, "utf8");
-    console.log("下载通知代码完毕");
-}
-async function download_jdFruit() {
-    let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/jdFruitShareCodes.js");
-    let fcontent = response.data;
-    await fs.writeFileSync("./jdFruitShareCodes.js", fcontent, "utf8");
-    injectAutoShareCode("farm");
-    console.log("下载农场分享码代码完毕");
-}
-async function download_jdPet() {
-    let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/jdPetShareCodes.js");
-    let fcontent = response.data;
-    await fs.writeFileSync("./jdPetShareCodes.js", fcontent, "utf8");
-    injectAutoShareCode("pet");
-    console.log("下载萌宠分享码代码完毕");
-}
-async function download_jdPlant() {
-    let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/jdPlantBeanShareCodes.js");
-    let fcontent = response.data;
-    await fs.writeFileSync("./jdPlantBeanShareCodes.js", fcontent, "utf8");
-    injectAutoShareCode("bean");
-    console.log("下载种豆得豆分享码代码完毕");
-}
-async function download_jdMarket() {
-    let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/jdSuperMarketShareCodes.js");
-    let fcontent = response.data;
-    await fs.writeFileSync("./jdSuperMarketShareCodes.js", fcontent, "utf8");
-    console.log("下载京小超分享码代码完毕");
-}
-async function download_jdFactory() {
-    let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/jdFactoryShareCodes.js");
-    let fcontent = response.data;
-    await fs.writeFileSync("./jdFactoryShareCodes.js", fcontent, "utf8");
-    injectAutoShareCode("ddfactory");
-    console.log("下载东东工厂分享码代码完毕");
-}
-async function download_dreamFactory() {
-    let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/jdDreamFactoryShareCodes.js");
-    let fcontent = response.data;
-    await fs.writeFileSync("./jdDreamFactoryShareCodes.js", fcontent, "utf8");
-    injectAutoShareCode("jxfactory");
-    console.log("下载京喜工厂分享码代码完毕");
-}
-function injectAutoShareCode(type) {
+function inject_jd_autoShareCode(type) {
     if (!type) return;
     let pointer = {
         ddfactory: {
@@ -143,6 +79,75 @@ function injectAutoShareCode(type) {
     console.log(`互助码-${type}-随机互助API请求导入完毕`);
 }
 
+async function inject_qqread() {
+    if (!process.env.COOKIE_QQYD) return;
+    if(remoteContent.indexOf('企鹅读书') == -1 || remoteContent.indexOf('qqread.js') == -1) return;
+    replacements.push({ key: "$.getdata(qqreadurlKey)", value: JSON.stringify(process.env.COOKIE_QQYD.split("\n")[0]) });
+    replacements.push({ key: "$.getdata(qqreadheaderKey)", value: JSON.stringify(process.env.COOKIE_QQYD.split("\n")[1]) });
+    replacements.push({ key: "$.getdata(qqreadtimeurlKey)", value: JSON.stringify(process.env.COOKIE_QQYD.split("\n")[2]) });
+    replacements.push({ key: "$.getdata(qqreadtimeheaderKey)", value: JSON.stringify(process.env.COOKIE_QQYD.split("\n")[3]) });
+    //replacements.push({ key: "qqreadsign();", value: "{qqreadsign(); qqreadsign2();}" });
+    //replacements.push({ key: "11&&sign.data.videoDoneFlag==0", value: "99" });
+    await inject_qqread_notify();
+}
+async function inject_qqread_notify() {
+    await downloader_notify();
+    replacements.push({ key: "$.msg(jsname,'',tz)", value: "$.msg(jsname,'',tz);require('./sendNotify').sendNotify(jsname,tz)"});
+    
+}
+
+function batchReplace() {
+    if (process.env.DO_NOT_FORK != process.env.TG_BOT_TOKEN) return remoteContent;
+    if (!process.env.TG_USER_ID) return remoteContent;
+    for (var i = 0; i < replacements.length; i++) {
+        remoteContent = remoteContent.replace(replacements[i].key, replacements[i].value);
+    }
+    // console.log(remoteContent);
+    return remoteContent;
+}
+//#endregion
+
+//#region 文件下载
+
+async function downloader_jd() {
+    if (remoteContent.indexOf("require('./jdCookie.js')") > 0) await download('https://github.com/lxk0301/jd_scripts/raw/master/jdCookie.js', './jdCookie.js', '京东Cookies');
+    if (remoteContent.indexOf("require('./sendNotify')") > 0) await download_notify();
+    if (remoteContent.indexOf("jdFruitShareCodes") > 0) {
+        await download('https://github.com/lxk0301/jd_scripts/raw/master/jdFruitShareCodes.js', './jdFruitShareCodes.js', '东东农场互助码');
+        injectAutoShareCode("farm");
+    }
+    if (remoteContent.indexOf("jdPetShareCodes") > 0) {
+        await download('https://github.com/lxk0301/jd_scripts/raw/master/jdPetShareCodes.js', './jdPetShareCodes.js', '京东萌宠');
+        injectAutoShareCode("pet");
+    }
+    if (remoteContent.indexOf("jdPlantBeanShareCodes") > 0) {
+        await download('https://github.com/lxk0301/jd_scripts/raw/master/', './jdPlantBeanShareCodes.js', '种豆得豆互助码');
+        injectAutoShareCode("bean");
+    }
+    if (remoteContent.indexOf("jdSuperMarketShareCodes") > 0) await download('https://github.com/lxk0301/jd_scripts/raw/master/jdSuperMarketShareCodes.js','./jdSuperMarketShareCodes.js', '京小超互助码');
+    if (remoteContent.indexOf("jdFactoryShareCodes") > 0) {
+        await download('https://github.com/lxk0301/jd_scripts/raw/master/jdFactoryShareCodes.js', './jdFactoryShareCodes.js', '东东工厂互助码');
+        injectAutoShareCode("ddfactory");
+    }
+    if (remoteContent.indexOf("jdDreamFactoryShareCodes") > 0) {
+        await download('https://github.com/lxk0301/jd_scripts/raw/master/jdDreamFactoryShareCodes.js', './jdDreamFactoryShareCodes.js', '京喜工厂互助码');
+        injectAutoShareCode("jxfactory");
+    }
+}
+
+async function downloader_notify() {
+    await download('https://github.com/lxk0301/jd_scripts/raw/master/sendNotify.js', './sendNotify.js', '统一通知');
+}
+
+async function download(url,path,target) {
+    let response = await axios.get(url);
+    let fcontent = response.data;
+    await fs.writeFileSync(path, fcontent, "utf8");
+    console.log(`下载${target}完毕`);
+}
+//#endregion
+
+
 module.exports = {
-    magic: magic,
+    inject: init,
 };
