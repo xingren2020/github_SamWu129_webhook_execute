@@ -153,7 +153,7 @@ async function all() {
     }
     await qqreadwktime();
     await qqreadpick();
-    showmsg();
+    await showmsg();
     $.done();
 }
 /** 获取用户信息 */
@@ -689,7 +689,7 @@ function qqreadpick() {
     });
 }
 /** 通知结果 */
-function showmsg() {
+async function showmsg() {
     console.log(new Date().getTime(), "showmsg");
     console.log(tz);
 
