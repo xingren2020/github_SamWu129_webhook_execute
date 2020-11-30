@@ -7,7 +7,6 @@ async function changeFiele() {
     let response = await axios.get(process.env.SYNCURL);
     let content = response.data;
     content = await stupid.inject(content);
-    console.log(content);
     await fs.writeFileSync("./executeOnce.js", content, "utf8");
     console.log("替换变量完毕");
 }
@@ -28,7 +27,6 @@ async function start() {
 
     try {
         await changeFiele();
-        return;
         await exec("node executeOnce.js", { stdio: "inherit" });
     } catch (e) {
         console.log("执行异常:" + e);
