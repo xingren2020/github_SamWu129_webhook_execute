@@ -108,8 +108,8 @@ async function inject_qqread() {
 async function inject_qqread_notify() {
     await downloader_notify();
     replacements.push({
-        key: "/$.msg(jsname,'',tz)/g", //global replace
-        value: "{$.msg(jsname,'',tz);require('./sendNotify').sendNotify(jsname,tz)}",
+        key: "/$.msg(jsname, '', tz)/g", //global replace
+        value: "{$.msg(jsname, '', tz);\nawait require('./sendNotify').sendNotify(jsname,tz)}",
     });
 }
 
