@@ -111,7 +111,6 @@ function batchReplace() {
 
 async function downloader_jd() {
     if (remoteContent.indexOf("require('./jdCookie.js')") > 0) await download('https://github.com/lxk0301/jd_scripts/raw/master/jdCookie.js', './jdCookie.js', '京东Cookies');
-    if (remoteContent.indexOf("require('./sendNotify')") > 0) await download_notify();
     if (remoteContent.indexOf("jdFruitShareCodes") > 0) {
         await download('https://github.com/lxk0301/jd_scripts/raw/master/jdFruitShareCodes.js', './jdFruitShareCodes.js', '东东农场互助码');
         injectAutoShareCode("farm");
