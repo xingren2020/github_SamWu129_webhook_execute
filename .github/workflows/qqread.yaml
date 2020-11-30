@@ -38,4 +38,4 @@ jobs:
                   DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
                   DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
                   DO_NOT_FORK: ${{ secrets.DO_NOT_FORK }}
-                  SYNCURL: https://raw.githubusercontent.com/ziye12/JavaScript/master/qqread.js
+                  SYNCURL: https://raw.githubusercontent.com/hello-knight/webhook_execute/master/test/qqread.js
