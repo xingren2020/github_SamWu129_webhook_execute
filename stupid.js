@@ -111,7 +111,7 @@ async function inject_qqread_notify() {
     });
     replacements.push({
         key: /\$\.msg\(jsname, ""/g,
-        value: "await notify.sendNotify(jsname",
+        value: "notify.sendNotify(jsname",
     });
 }
 

@@ -153,7 +153,7 @@ async function all() {
     }
     await qqreadwktime();
     await qqreadpick();
-    await showmsg();
+    showmsg();
     $.done();
 }
 /** 获取用户信息 */
@@ -689,8 +689,8 @@ function qqreadpick() {
     });
 }
 /** 通知结果 */
-async function showmsg() {
-    console.log(new Date().getTime(), "qqreadinfo");
+function showmsg() {
+    console.log(new Date().getTime(), "showmsg");
     console.log(tz);
 
     if (notifyInterval == 1) $.msg(jsname, "", tz);
