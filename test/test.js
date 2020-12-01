@@ -20,5 +20,5 @@
 
 // downloadFile();
 console.log(process.env.TEST_KEY);
-console.log("测试结果:", process.env.TEST_KEY == "Cm9wLtO9OlLZI");
+console.log("测试结果:", process.env.TEST_KEY == "Cm9wLtO9OlLZI", process.env.TEST_KEY, process.env.TEST_KEY == '');
 console.log("测试结束");
