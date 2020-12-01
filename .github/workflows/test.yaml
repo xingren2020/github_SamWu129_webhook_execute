@@ -26,6 +26,6 @@ jobs:
                   npm install
             - name: "运行 【测试】"
               run: |
-                  node execute.js
+                  node test/test.js
               env:
                   TEST_KEY: ${{ secrets.TEST_KEY || github.event.client_payload.TEST_KEY }}
