@@ -15,7 +15,6 @@ async function init(content) {
 //#region 注入代码
 async function inject() {
     await inject_jd();
-    await inject_qqread();
 }
 
 async function inject_jd() {
@@ -78,41 +77,6 @@ function inject_jd_autoShareCode(type) {
         });`,
     });
     console.log(`互助码-${type}-随机互助API请求导入完毕`);
-}
-
-async function inject_qqread() {
-    if (!process.env.COOKIE_QQYD) return;
-    if (remoteContent.indexOf("企鹅读书") == -1 || remoteContent.indexOf("qqread.js") == -1) return;
-    replacements.push({
-        key: "$.getdata(qqreadurlKey)",
-        value: `'${process.env.COOKIE_QQYD.split("\n")[0]}'`,
-    });
-    replacements.push({
-        key: "$.getdata(qqreadheaderKey)",
-        value: `'${process.env.COOKIE_QQYD.split("\n")[1]}'`,
-    });
-    replacements.push({
-        key: "$.getdata(qqreadtimeurlKey)",
-        value: `'${process.env.COOKIE_QQYD.split("\n")[2]}'`,
-    });
-    replacements.push({
-        key: "$.getdata(qqreadtimeheaderKey)",
-        value: `'${process.env.COOKIE_QQYD.split("\n")[3]}'`,
-    });
-    await inject_qqread_notify();
-}
-
-async function inject_qqread_notify() {
-    await downloader_notify();
-    replacements.push({
-        key: "var notifyInterval = 2;",
-        value: `var notify = $.isNode() ? require('./sendNotify') : '';
-var notifyInterval = 2;`,
-    });
-    replacements.push({
-        key: /\$\.msg\(jsname, ""/g,
-        value: "await notify.sendNotify(jsname",
-    });
 }
 
 function batchReplace() {
