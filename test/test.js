@@ -19,6 +19,9 @@
 // }
 
 // downloadFile();
-console.log(process.env.TEST_KEY);
-console.log("测试结果:", process.env.TEST_KEY == "Cm9wLtO9OlLZI");
+console.log("结果显示", process.env.TEST_KEY);
+console.log("测试结果1:", process.env.TEST_KEY == "Cm9wLtO9OlLZI");
+console.log("测试结果2:", !!process.env.TEST_KEY);
+console.log("测试结果3:", process.env.TEST_KEY == '');
+
 console.log("测试结束");
