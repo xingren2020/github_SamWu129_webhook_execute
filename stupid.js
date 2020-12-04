@@ -54,6 +54,10 @@ function inject_jd_autoShareCode(type) {
             uuid: "$.petInfo.shareCode",
             match: "console.log(`\\n【您的互助码shareCode】 ${$.petInfo.shareCode}\\n`);",
         },
+        // jxstory: {
+        //     uuid: "$.shareId",
+        //     match: "console.log(`分享码: ${data['shareId']}`);",
+        // },
     };
     let target = pointer[type];
     if (!target) return;
@@ -140,6 +144,14 @@ async function downloader_jd() {
             "京喜工厂互助码"
         );
         inject_jd_autoShareCode("jxfactory");
+    }
+    if (remoteContent.indexOf("jdJxStoryShareCodes") > 0) {
+        await download(
+            "https://github.com/lxk0301/jd_scripts/raw/master/jdJxStoryShareCodes.js",
+            "./jdJxStoryShareCodes.js",
+            "京喜故事互助码"
+        );
+        inject_jd_autoShareCode("jxstory");
     }
 }
 
