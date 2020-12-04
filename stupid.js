@@ -93,7 +93,7 @@ function batchReplace() {
 //#region 文件下载
 
 async function downloader_jd() {
-    if (remoteContent.indexOf("require('./jdCookie.js')") > 0)
+    if (/require\(['"`]{1}.\/jdCookie.js['"`]{1}\)/.test(remoteContent))
         await download("https://github.com/lxk0301/jd_scripts/raw/master/jdCookie.js", "./jdCookie.js", "京东Cookies");
     if (remoteContent.indexOf("jdFruitShareCodes") > 0) {
         await download(
