@@ -5,6 +5,8 @@ name: 京东年终奖
 
 on:
     workflow_dispatch:
+    schedule:
+        - cron: "10 1 * * *"
     watch:
         types: [started]
     repository_dispatch:
