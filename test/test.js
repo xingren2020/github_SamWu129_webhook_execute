@@ -24,4 +24,5 @@ console.log("测试结果1:", process.env.TEST_KEY == "Cm9wLtO9OlLZI");
 console.log("测试结果2:", !!process.env.TEST_KEY);
 console.log("测试结果3:", process.env.TEST_KEY == '');
 
+console.log("附加参数：", process.argv);
 console.log("测试结束");
