@@ -39,5 +39,8 @@ jobs:
                   DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET || github.event.client_payload.DD_BOT_SECRET }}
                   MARKET_COIN_TO_BEANS: ${{ secrets.MARKET_COIN_TO_BEANS || github.event.client_payload.MARKET_COIN_TO_BEANS }}
                   MARKET_REWARD_NOTIFY: ${{ secrets.MARKET_REWARD_NOTIFY || github.event.client_payload.MARKET_REWARD_NOTIFY }}
+                  BUSINESS_CIRCLE_JUMP: ${{ secrets.BUSINESS_CIRCLE_JUMP || github.event.client_payload.BUSINESS_CIRCLE_JUMP }}
+                  SUPERMARKET_UPGRADE: ${{ secrets.SUPERMARKET_UPGRADE || github.event.client_payload.SUPERMARKET_UPGRADE }}
+                  SUPERMARKET_LOTTERY: ${{ secrets.SUPERMARKET_LOTTERY || github.event.client_payload.SUPERMARKET_LOTTERY }}
                   DO_NOT_FORK: ${{ secrets.DO_NOT_FORK || github.event.client_payload.DO_NOT_FORK }}
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_blueCoin.js

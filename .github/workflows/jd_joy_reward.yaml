@@ -38,5 +38,6 @@ jobs:
                   DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN || github.event.client_payload.DD_BOT_TOKEN }}
                   DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET || github.event.client_payload.DD_BOT_SECRET }}
                   JD_JOY_REWARD_NOTIFY: ${{ secrets.JD_JOY_REWARD_NOTIFY || github.event.client_payload.JD_JOY_REWARD_NOTIFY }}
+                  JD_JOY_REWARD_NAME: ${{ secrets.JD_JOY_REWARD_NAME || github.event.client_payload.JD_JOY_REWARD_NAME }}
                   DO_NOT_FORK: ${{ secrets.DO_NOT_FORK || github.event.client_payload.DO_NOT_FORK }}
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_joy_reward.js
