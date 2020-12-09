@@ -314,7 +314,23 @@ jobs:
                   DO_NOT_FORK: ${{ secrets.DO_NOT_FORK || github.event.client_payload.DO_NOT_FORK }}
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_unsubscribe.js
 
-            - name: "运行 【京东年终奖】-1212"
+            - name: "运行 【数码加购京豆】- 1211"
+              run: |
+                  node execute.js
+              env:
+                  JD_COOKIE: ${{ secrets.JD_COOKIE || github.event.client_payload.JD_COOKIE }}
+                  JD_DEBUG: ${{ secrets.JD_DEBUG || github.event.client_payload.JD_DEBUG }}
+                  PUSH_KEY: ${{ secrets.PUSH_KEY || github.event.client_payload.PUSH_KEY }}
+                  BARK_PUSH: ${{ secrets.BARK_PUSH || github.event.client_payload.BARK_PUSH }}
+                  BARK_SOUND: ${{ secrets.BARK_SOUND || github.event.client_payload.BARK_SOUND }}
+                  TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN || github.event.client_payload.TG_BOT_TOKEN }}
+                  TG_USER_ID: ${{ secrets.TG_USER_ID || github.event.client_payload.TG_USER_ID }}
+                  DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN || github.event.client_payload.DD_BOT_TOKEN }}
+                  DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET || github.event.client_payload.DD_BOT_SECRET }}
+                  DO_NOT_FORK: ${{ secrets.DO_NOT_FORK || github.event.client_payload.DO_NOT_FORK }}
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_digital_floor.js
+
+            - name: "运行 【京东年终奖】- 1212"
               run: |
                   node execute.js
               env:
@@ -330,7 +346,7 @@ jobs:
                   DO_NOT_FORK: ${{ secrets.DO_NOT_FORK || github.event.client_payload.DO_NOT_FORK }}
                   SYNCURL: https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_split.js
 
-            - name: "运行 【苹果抽奖机】-1214"
+            - name: "运行 【苹果抽奖机】- 1214"
               run: |
                   node execute.js
               env:
@@ -346,7 +362,7 @@ jobs:
                   DO_NOT_FORK: ${{ secrets.DO_NOT_FORK || github.event.client_payload.DO_NOT_FORK }}
                   SYNCURL: https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_apple_live.js
 
-            - name: "运行 【京东秒杀红包雨】-1231"
+            - name: "运行 【京东秒杀红包雨】- 1231"
               run: |
                   node execute.js
               env:
