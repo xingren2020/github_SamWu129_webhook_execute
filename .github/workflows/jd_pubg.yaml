@@ -23,7 +23,7 @@ jobs:
             - name: 安装依赖包
               run: |
                   npm install
-            - name: "运行【京喜每日签到】"
+            - name: "运行【京东PUBG】"
               run: |
                   node execute.js
               env:
