@@ -24,6 +24,15 @@ console.log("结果显示TEST_KEY1:", process.env.TEST_KEY1);
 console.log("测试结果1:", process.env.TEST_KEY == "Cm9wLtO9OlLZI");
 console.log("测试结果2:", !!process.env.TEST_KEY);
 console.log("测试结果3:", process.env.TEST_KEY == "");
+if (process.env.TEST_KEY1) {
+    await new Promise((resolve) => {
+        var i = 0;
+        setInterval(function () {
+            i++;
+            console.log("持续输出:" + i);
+        }, 10000);
+    });
+}
 
 console.log("附加参数：", process.argv);
 console.log("测试结束");
