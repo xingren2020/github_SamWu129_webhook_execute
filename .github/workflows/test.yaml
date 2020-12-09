@@ -24,8 +24,11 @@ jobs:
             - name: 安装依赖包
               run: |
                   npm install
-            - name: "运行 【测试】"
+            - name: "运行 【测试1】"
               run: |
-                  node test/test.js
+                  node test/test.js 
+            - name: "运行 【测试2】"
+              run: |
+                  node test/test.js https://github.com/lxk0301/jd_scripts/raw/master/jd_speed.js
               env:
                   TEST_KEY: ${{ secrets.TEST_KEY || github.event.client_payload.TEST_KEY }}
