@@ -1,14 +1,14 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: 京豆昨日收益
+name: 京东抽奖机[无需定时]
 
 on:
     workflow_dispatch:
     watch:
         types: [started]
     repository_dispatch:
-        types: jd_bean_change
+        types: jd_lotteryMachine
 
 jobs:
     build:
@@ -24,7 +24,7 @@ jobs:
             - name: 安装依赖包
               run: |
                   npm install
-            - name: "运行 【京豆昨日收益】"
+            - name: "运行 【东东抽奖机】【新店福利】【东东福利屋】【东东生活】【闪购盲盒】【疯狂砸金蛋】"
               run: |
                   node execute.js
               env:
@@ -38,4 +38,4 @@ jobs:
                   DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN || github.event.client_payload.DD_BOT_TOKEN }}
                   DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET || github.event.client_payload.DD_BOT_SECRET }}
                   DO_NOT_FORK: ${{ secrets.DO_NOT_FORK || github.event.client_payload.DO_NOT_FORK }}
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_bean_change.js
+                  SYNCURL: https://github.com/yangtingxiao/QuantumultX/raw/master/scripts/jd/jd_lotteryMachine.js

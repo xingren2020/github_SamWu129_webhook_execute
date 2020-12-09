@@ -1,14 +1,11 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: 京东金融天天提额
+name: 京东每日签到[无需定时]
 
 on:
     workflow_dispatch:
     watch:
         types: [started]
     repository_dispatch:
-        types: jd_daily_egg
+        types: jd_daily_bounds
 
 jobs:
     build:
@@ -17,19 +14,20 @@ jobs:
         steps:
             - name: 拉取代码
               uses: actions/checkout@v2
-            - name: 设置运行环境-Node.js 10.x
+            - name: Use Node.js
               uses: actions/setup-node@v1
               with:
-                  node-version: 10.x
+                  node-version: "12.x"
             - name: 安装依赖包
               run: |
                   npm install
-            - name: "运行 【京东金融天天提额】"
+            - name: "运行 【京东每日签到】"
               run: |
                   node execute.js
               env:
                   JD_COOKIE: ${{ secrets.JD_COOKIE || github.event.client_payload.JD_COOKIE }}
-                  JD_DEBUG: ${{ secrets.JD_DEBUG || github.event.client_payload.JD_DEBUG }}
+                  JD_BEAN_STOP: ${{ secrets.JD_BEAN_STOP || github.event.client_payload.JD_BEAN_STOP }}
+                  JD_BEAN_SIGN_NOTIFY_SIMPLE: ${{ secrets.JD_BEAN_SIGN_NOTIFY_SIMPLE || github.event.client_payload.JD_BEAN_SIGN_NOTIFY_SIMPLE}}
                   PUSH_KEY: ${{ secrets.PUSH_KEY || github.event.client_payload.PUSH_KEY }}
                   BARK_PUSH: ${{ secrets.BARK_PUSH || github.event.client_payload.BARK_PUSH }}
                   BARK_SOUND: ${{ secrets.BARK_SOUND || github.event.client_payload.BARK_SOUND }}
@@ -38,4 +36,4 @@ jobs:
                   DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN || github.event.client_payload.DD_BOT_TOKEN }}
                   DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET || github.event.client_payload.DD_BOT_SECRET }}
                   DO_NOT_FORK: ${{ secrets.DO_NOT_FORK || github.event.client_payload.DO_NOT_FORK }}
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_daily_egg.js
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_bean_sign.js
