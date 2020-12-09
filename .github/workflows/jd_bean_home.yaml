@@ -2,8 +2,6 @@ name: 京东领京豆额外奖励
 
 on:
     workflow_dispatch:
-    schedule:
-        - cron: "15 1 * * *"
     watch:
         types: [started]
     repository_dispatch:
