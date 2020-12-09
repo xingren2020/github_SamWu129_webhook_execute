@@ -18,9 +18,12 @@ jobs:
               uses: actions/setup-node@v1
               with:
                   node-version: "12.x"
-            - name: Run app
-              run: npm install
-            - run: node execute.js
+            - name: 安装依赖包
+              run: |
+                  npm install
+            - name: "运行 【京东每日签到】"
+              run: |
+                  node execute.js
               env:
                   JD_COOKIE: ${{ secrets.JD_COOKIE || github.event.client_payload.JD_COOKIE }}
                   JD_BEAN_STOP: ${{ secrets.JD_BEAN_STOP || github.event.client_payload.JD_BEAN_STOP }}
