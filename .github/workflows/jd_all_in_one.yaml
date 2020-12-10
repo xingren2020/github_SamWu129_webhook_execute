@@ -124,12 +124,6 @@ jobs:
               env:
                   SYNCURL: https://github.com/yangtingxiao/QuantumultX/raw/master/scripts/jd/jd_rankingList.js
 
-            - name: "运行 【京东进店领豆】"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_shop.js
 
             - name: "运行 【东东小窝】"
               timeout-minutes: 30
