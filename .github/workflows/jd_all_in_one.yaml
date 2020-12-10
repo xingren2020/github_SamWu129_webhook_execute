@@ -33,7 +33,70 @@ jobs:
               run: |
                   npm install
 
-            - name: "运行 【京东每日签到】"
+            - name: "运行 【京东进店领豆】未知s/账号"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_shop.js
+
+            - name: "运行【京东十元街】(2s/账号)"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_syj.js
+
+            - name: "运行 【京豆昨日收益】(5s/账号)"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_bean_change.js
+
+            - name: "运行 【京东快递】(3s/账号)"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_kd.js
+
+            - name: "运行 【京东金融天天提额】(5s/账号)"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_daily_egg.js
+
+            - name: "运行 【京东汽车】(10s/账号)"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_car.js
+
+            - name: "运行 【京东排行榜】(15s/账号)"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://github.com/yangtingxiao/QuantumultX/raw/master/scripts/jd/jd_rankingList.js
+
+            - name: "运行【京喜每日签到】(25s/账号)"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://github.com/Sunert/Scripts/raw/master/Task/jingxi.js
+
+            - name: "运行【抽京豆】(30s/账号)"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_club_lottery.js
+
+            - name: "运行 【京东每日签到】(30s/账号)"
               timeout-minutes: 30
               run: |
                   node execute.js
@@ -42,14 +105,35 @@ jobs:
                   JD_BEAN_SIGN_NOTIFY_SIMPLE: ${{ secrets.JD_BEAN_SIGN_NOTIFY_SIMPLE || github.event.client_payload.JD_BEAN_SIGN_NOTIFY_SIMPLE}}
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_bean_sign.js
 
-            - name: "运行 【京豆昨日收益】"
+            - name: "运行【京东领京豆额外奖励】(25s/账号)"
               timeout-minutes: 30
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_bean_change.js
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_bean_home.js
 
-            - name: "运行【京小超领蓝币(小费)】"
+            - name: "运行 【京东金融养猪猪】(35s/账号)"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_pigPet.js
+
+            - name: "运行【泡泡大战】(45s/账号)"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://github.com/799953468/Quantumult-X/raw/master/Scripts/JD/jd_paopao.js
+
+            - name: "运行 【东东小窝】(60s/账号)"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_small_home.js
+
+            - name: "运行【京小超领蓝币(小费)】(90s/账号)"
               timeout-minutes: 30
               run: |
                   node execute.js
@@ -60,105 +144,6 @@ jobs:
                   SUPERMARKET_UPGRADE: ${{ secrets.SUPERMARKET_UPGRADE || github.event.client_payload.SUPERMARKET_UPGRADE }}
                   SUPERMARKET_LOTTERY: ${{ secrets.SUPERMARKET_LOTTERY || github.event.client_payload.SUPERMARKET_LOTTERY }}
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_blueCoin.js
-
-            - name: "运行 【京东汽车】"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_car.js
-
-            - name: "运行【抽京豆】"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_club_lottery.js
-
-            - name: "运行 【京东金融天天提额】"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_daily_egg.js
-
-            - name: "运行 【京东健康】"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_health.js
-
-            - name: "运行【京喜每日签到】"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/Sunert/Scripts/raw/master/Task/jingxi.js
-
-            - name: "运行 【京东快递】"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_kd.js
-
-            - name: "运行【泡泡大战】"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/799953468/Quantumult-X/raw/master/Scripts/JD/jd_paopao.js
-
-            - name: "运行 【京东金融养猪猪】"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_pigPet.js
-
-            - name: "运行 【京东排行榜】"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/yangtingxiao/QuantumultX/raw/master/scripts/jd/jd_rankingList.js
-
-            - name: "运行 【京东进店领豆】"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_shop.js
-
-            - name: "运行 【东东小窝】"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_small_home.js
-
-            - name: "运行【京东十元街】"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_syj.js
-
-            - name: "运行【京东领京豆额外奖励】"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_bean_home.js
-
-            - name: "运行 【京东取关店铺】"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  UNSUBSCRIBE: ${{ secrets.UNSUBSCRIBE || github.event.client_payload.UNSUBSCRIBE }}
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_unsubscribe.js
 
             - name: "运行 【数码加购京豆】- 1211"
               timeout-minutes: 30
@@ -188,9 +173,24 @@ jobs:
               env:
                   SYNCURL: https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_ms_redrain.js
 
-            - name: "运行 【东东抽奖机+新店福利+东东福利屋+东东生活+闪购盲盒+疯狂砸金蛋】"
+            - name: "运行 【京东健康】(3min/账号)"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_health.js
+
+            - name: "运行 【东东抽奖机+新店福利+东东福利屋+东东生活+闪购盲盒+疯狂砸金蛋】(9min/账号)"
               timeout-minutes: 60
               run: |
                   node execute.js
               env:
                   SYNCURL: https://github.com/yangtingxiao/QuantumultX/raw/master/scripts/jd/jd_lotteryMachine.js
+
+            - name: "运行 【京东取关店铺】(30s/账号)"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  UNSUBSCRIBE: ${{ secrets.UNSUBSCRIBE || github.event.client_payload.UNSUBSCRIBE }}
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_unsubscribe.js
