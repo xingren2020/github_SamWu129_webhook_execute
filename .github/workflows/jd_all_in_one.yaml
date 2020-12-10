@@ -152,7 +152,6 @@ jobs:
               env:
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_bean_home.js
 
-
             - name: "运行 【京东取关店铺】"
               timeout-minutes: 30
               run: |
@@ -195,9 +194,3 @@ jobs:
                   node execute.js
               env:
                   SYNCURL: https://github.com/yangtingxiao/QuantumultX/raw/master/scripts/jd/jd_lotteryMachine.js
-
-            - name: "运行 【京喜故事】"
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_jxstory.js
