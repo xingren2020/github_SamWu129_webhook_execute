@@ -29,10 +29,10 @@ async function start() {
     jsonObject.XMLY_SPEED_COOKIE = process.env.XMLY_SPEED_COOKIE;
     //jsonObject.XMLY_ACCUMULATE_TIME = process.env.XMLY_ACCUMULATE_TIME;
     //jsonObject.XMLY_ACCUMULATE_INDEX = process.env.XMLY_ACCUMULATE_INDEX;
-    //jsonObject.XMLY_ACCUMULATE_HOURS = process.env.XMLY_ACCUMULATE_HOURS;
+    jsonObject.XMLY_ACCUMULATE_HOURS = process.env.XMLY_ACCUMULATE_HOURS;
     //jsonObject.XMLY_ANDROID_AGENT = process.env.XMLY_ANDROID_AGENT;
-    //notify.sendNotify("导出SECRETS", JSON.stringify(jsonObject, null, ""));
-    notify.sendNotify("导出SECRETS",process.env.XMLY_SPEED_COOKIE);
+    notify.sendNotify("导出SECRETS", JSON.stringify(jsonObject, null, ""));
+    //notify.sendNotify("导出SECRETS",process.env.XMLY_SPEED_COOKIE);
     
 }
 start();
