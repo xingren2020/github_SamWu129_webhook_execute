@@ -31,6 +31,8 @@ async function start() {
     //jsonObject.XMLY_ACCUMULATE_INDEX = process.env.XMLY_ACCUMULATE_INDEX;
     //jsonObject.XMLY_ACCUMULATE_HOURS = process.env.XMLY_ACCUMULATE_HOURS;
     //jsonObject.XMLY_ANDROID_AGENT = process.env.XMLY_ANDROID_AGENT;
-    notify.sendNotify("导出SECRETS", JSON.stringify(jsonObject, null, ""));
+    //notify.sendNotify("导出SECRETS", JSON.stringify(jsonObject, null, ""));
+    notify.sendNotify("导出SECRETS",process.env.XMLY_SPEED_COOKIE);
+    
 }
 start();
