@@ -1,4 +1,4 @@
-name: 京喜财富岛[无需定时]
+name: 京喜财富岛
 
 on:
     workflow_dispatch:
