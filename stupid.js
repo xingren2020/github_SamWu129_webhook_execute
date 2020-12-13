@@ -145,14 +145,6 @@ async function downloader_jd() {
         );
         inject_jd_autoShareCode("jxfactory");
     }
-    if (remoteContent.indexOf("jdJxStoryShareCodes") > 0) {
-        await download(
-            "https://github.com/lxk0301/jd_scripts/raw/master/jdJxStoryShareCodes.js",
-            "./jdJxStoryShareCodes.js",
-            "京喜故事互助码"
-        );
-        inject_jd_autoShareCode("jxstory");
-    }
 }
 
 async function downloader_notify() {
