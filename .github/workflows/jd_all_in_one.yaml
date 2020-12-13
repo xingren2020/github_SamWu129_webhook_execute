@@ -173,6 +173,13 @@ jobs:
               env:
                   SYNCURL: https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_ms_redrain.js
 
+            - name: "运行 【金融打卡领年终奖】- 1231"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jr_sign.js
+
             - name: "运行 【京东健康】(3min/账号)"
               timeout-minutes: 30
               run: |
