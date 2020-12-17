@@ -202,7 +202,7 @@ jobs:
               env:
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_watch.js
 
-            - name: "运行 【京东看一看收尾】8min/账号"
+            - name: "运行 【京东看一看收尾】1min/账号"
               timeout-minutes: 20
               run: |
                   node execute.js
