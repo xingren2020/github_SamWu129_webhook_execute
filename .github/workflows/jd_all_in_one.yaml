@@ -180,13 +180,6 @@ jobs:
               env:
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_health.js
 
-            - name: "运行 【京东看一看】4s/账号"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_watch.js
-
             - name: "运行 【东东抽奖机+新店福利+东东福利屋+东东生活+闪购盲盒+疯狂砸金蛋】(9min/账号)"
               timeout-minutes: 60
               run: |
@@ -201,3 +194,10 @@ jobs:
               env:
                   UNSUBSCRIBE: ${{ secrets.UNSUBSCRIBE || github.event.client_payload.UNSUBSCRIBE }}
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_unsubscribe.js
+
+            - name: "运行 【京东看一看】8min/账号"
+              timeout-minutes: 60
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_watch.js
