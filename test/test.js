@@ -2,6 +2,14 @@ const axios = require("axios");
 const fs = require("fs");
 const stupid = require("../stupid");
 
+// async function justTestLocal() {
+//     var content = await fs.readFileSync("./test/jd_jdfactory.js", "utf-8");
+//     content = await stupid.inject(content);
+//     console.log(content);
+//     return 0;
+// }
+// justTestLocal();
+
 async function downloadFile() {
     // var url = [
     //     "https://github.com/lxk0301/jd_scripts/raw/master/jd_pet.js",
@@ -13,12 +21,13 @@ async function downloadFile() {
     let response = await axios.get(process.env.SYNCURL);
     let content = response.data;
     content = content.replace("console.log(`\\n【您的互助码shareCode】 ${$.petInfo.shareCode}\\n`);", "//已替换的代码");
-    // content = await stupid.magic(content);
+    content = await stupid.inject(content);
     console.log(content);
     return "end";
 }
 
 downloadFile();
+
 // console.log("结果显示TEST_KEY:", process.env.TEST_KEY);
 // console.log("结果显示TEST_KEY1:", process.env.TEST_KEY1);
 // console.log("测试结果1:", process.env.TEST_KEY == "Cm9wLtO9OlLZI");
