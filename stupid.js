@@ -36,7 +36,7 @@ async function inject_jd() {
     await downloader_jd();
     await downloader_notify();
 }
-
+/** 自动注入分享码 */
 function inject_jd_autoShareCode(type) {
     if (!type) return;
     let pointer = {
@@ -53,6 +53,10 @@ function inject_jd_autoShareCode(type) {
         pet: {
             uuid: "$.petInfo.shareCode",
             match: "console.log(`\\n【您的互助码shareCode】 ${$.petInfo.shareCode}\\n`);",
+        },
+        jdzz: {
+            uuid: "data.data.shareTaskRes.itemId",
+            match: "console.log(`\\n您的${$.name}好友助力码为： ${data.data.shareTaskRes.itemId}\\n`);",
         },
         // jxstory: {
         //     uuid: "$.shareId",
@@ -144,6 +148,9 @@ async function downloader_jd() {
             "京喜工厂互助码"
         );
         inject_jd_autoShareCode("jxfactory");
+    }
+    if (remoteContent.indexOf("jdDreamFactoryShareCodes") > 0) {
+        inject_jd_autoShareCode("jdzz");
     }
 }
 
