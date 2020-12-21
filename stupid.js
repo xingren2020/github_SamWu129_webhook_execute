@@ -43,7 +43,7 @@ function inject_jd_autoShareCode(type) {
         ddfactory: {
             isAsync: true, //是否异步执行
             uuid: "item.assistTaskDetailVo.taskToken",
-            match: "console.log(`\\n您的${$.name}好友助力邀请码：${item.assistTaskDetailVo.taskToken}\\n`)",
+            match: "console.log(`\n您的${$.name}好友助力邀请码：${item.assistTaskDetailVo.taskToken}\n`)",
             link: "https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_jdfactory.js", //没啥用,用于快捷定位
         },
         jxfactory: {
@@ -55,25 +55,25 @@ function inject_jd_autoShareCode(type) {
         bean: {
             isAsync: false,
             uuid: "$.myPlantUuid",
-            match: "console.log(`\\n【您的${$.name}互助码】 ${$.myPlantUuid}\\n`);",
+            match: "console.log(`\n【您的${$.name}互助码】 ${$.myPlantUuid}\n`);",
             link: "https://github.com/lxk0301/jd_scripts/raw/master/jd_plantBean.js",
         },
         farm: {
             isAsync: false,
             uuid: "$.farmInfo.farmUserPro.shareCode",
-            match: "console.log(`\\n【您的${$.name}互助码shareCode】 ${$.farmInfo.farmUserPro.shareCode}\\n`);",
+            match: "console.log(`\n【您的${$.name}互助码shareCode】 ${$.farmInfo.farmUserPro.shareCode}\n`);",
             link: "https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_fruit.js",
         },
         pet: {
             isAsync: false,
             uuid: "$.petInfo.shareCode",
-            match: "console.log(`\\n【您的互助码shareCode】 ${$.petInfo.shareCode}\\n`);",
+            match: "console.log(`\n【您的互助码shareCode】 ${$.petInfo.shareCode}\n`);",
             link: "https://github.com/lxk0301/jd_scripts/raw/master/jd_pet.js",
         },
         jdzz: {
             isAsync: true,
             uuid: "data.data.shareTaskRes.itemId",
-            match: "console.log(`\\n您的${$.name}好友助力码为： ${data.data.shareTaskRes.itemId}\\n`);",
+            match: "console.log(`\n您的${$.name}好友助力码为： ${data.data.shareTaskRes.itemId}\n`);",
             link: "https://github.com/lxk0301/jd_scripts/raw/master/jd_jdzz.js",
         },
     };
