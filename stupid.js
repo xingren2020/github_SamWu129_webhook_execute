@@ -5,7 +5,6 @@ var remoteContent;
 async function init(content) {
     remoteContent = content;
     await inject();
-    inject_jd_autoShareCode("ddfactory");
     return batchReplace(remoteContent);
 }
 //#region 注入代码
