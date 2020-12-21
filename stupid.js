@@ -112,6 +112,7 @@ function inject_jd_autoShareCode(type) {
     replacements.push({
         key: target.match,
         value: `${target.match}
+        console.log("准备执行注入代码");
         ${targetCode}`,
     });
     console.log(`互助码-${type}-随机互助API请求导入完毕`);
