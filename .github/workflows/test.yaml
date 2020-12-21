@@ -30,10 +30,6 @@ jobs:
               timeout-minutes: 1
               run: |
                   node test/test.js
-            - name: "运行 【测试2】"
-              timeout-minutes: 1
-              run: |
-                  node test/test.js https://github.com/lxk0301/jd_scripts/raw/master/jd_speed.js
               env:
                   TEST_KEY1: ${{ secrets.TEST_KEY1 || github.event.client_payload.TEST_KEY1 }}
                   SYNCURL: ${{ secrets.SYNCURL || github.event.client_payload.SYNCURL }}
