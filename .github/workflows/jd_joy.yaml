@@ -47,7 +47,5 @@ jobs:
                   DO_NOT_FORK: ${{ secrets.DO_NOT_FORK || github.event.client_payload.DO_NOT_FORK }}
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_joy.js
                   #独立配置
-                  JOY_FEED_COUNT: ${{ secrets.JOY_FEED_COUNT || github.event.client_payload.JOY_FEED_COUNT }}
-                  JOY_RUN_FLAG: ${{ secrets.JOY_RUN_FLAG || github.event.client_payload.JOY_RUN_FLAG }}
-                  JOY_FEED_COUNT: ${{ secrets.JOY_FEED_COUNT || github.event.client_payload.JOY_FEED_COUNT }}
-                  JOY_RUN_FLAG: ${{ secrets.JOY_RUN_FLAG || github.event.client_payload.JOY_RUN_FLAG }}
+                  JOY_RUN_FLAG: ${{ secrets.JOY_RUN_FLAG || github.event.client_payload.JOY_RUN_FLAG }} # 宠汪汪是否赛跑,是否参加赛跑(默认参加双人赛跑),false为否,true为是，脚本默认是true
+                  JOY_TEAM_LEVEL: ${{ secrets.JOY_TEAM_LEVEL || github.event.client_payload.JOY_TEAM_LEVEL }} # 宠汪汪参加什么级别的赛跑,参加几人的赛跑,可选数字为2,10,50，其中2代表参加双人PK赛，10代表参加10人突围赛，50代表参加50人挑战赛(注：此项功能在JOY_RUN_FLAG为true的时候才生效)，如若想设置不同账号参加不同类别的比赛则用&区分即可(如下三个账号：2&10&50)

@@ -48,4 +48,4 @@ jobs:
                   DO_NOT_FORK: ${{ secrets.DO_NOT_FORK || github.event.client_payload.DO_NOT_FORK }}
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_pet.js
                   #独立配置
-                  PET_NOTIFY_CONTROL: ${{ secrets.PET_NOTIFY_CONTROL || github.event.client_payload.PET_NOTIFY_CONTROL }}
+                  PET_NOTIFY_CONTROL: ${{ secrets.PET_NOTIFY_CONTROL || github.event.client_payload.PET_NOTIFY_CONTROL }} # 东东萌宠推送开关,控制京东萌宠是否静默运行,false为否(发送推送通知消息),true为是(即：不发送推送通知消息)

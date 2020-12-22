@@ -47,5 +47,5 @@ jobs:
                   DO_NOT_FORK: ${{ secrets.DO_NOT_FORK || github.event.client_payload.DO_NOT_FORK }}
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_joy_reward.js
                   #独立配置
-                  JD_JOY_REWARD_NOTIFY: ${{ secrets.JD_JOY_REWARD_NOTIFY || github.event.client_payload.JD_JOY_REWARD_NOTIFY }}
-                  JD_JOY_REWARD_NAME: ${{ secrets.JD_JOY_REWARD_NAME || github.event.client_payload.JD_JOY_REWARD_NAME }}
+                  JD_JOY_REWARD_NOTIFY: ${{ secrets.JD_JOY_REWARD_NOTIFY || github.event.client_payload.JD_JOY_REWARD_NOTIFY }} # 宠汪汪兑换京豆推送开关,控制jd_joy_reward.js脚本是否静默运行,false为否(发送推送通知消息),true为是(即：不发送推送通知消息)
+                  JD_JOY_REWARD_NAME: ${{ secrets.JD_JOY_REWARD_NAME || github.event.client_payload.JD_JOY_REWARD_NAME }} # 宠汪汪积分兑换多少京豆,目前可填值为20或者500,脚本默认20,0表示不兑换京豆

@@ -47,7 +47,8 @@ jobs:
                   DO_NOT_FORK: ${{ secrets.DO_NOT_FORK || github.event.client_payload.DO_NOT_FORK }}
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_superMarket.js
                   #独立配置
-                  SUPERMARKET_UPGRADE: ${{ secrets.SUPERMARKET_UPGRADE || github.event.client_payload.SUPERMARKET_UPGRADE }}
-                  jdBusinessCircleJump: ${{ secrets.BUSINESS_CIRCLE_JUMP || github.event.client_payload.BUSINESS_CIRCLE_JUMP }}
-                  SUPERMARKET_SHARECODES: ${{ secrets.SUPERMARKET_SHARECODES || github.event.client_payload.SUPERMARKET_SHARECODES }}
-                  jdSuperMarketLottery: ${{ secrets.SUPERMARKET_LOTTERY || github.event.client_payload.SUPERMARKET_LOTTERY }}
+                  MARKET_COIN_TO_BEANS: ${{ secrets.MARKET_COIN_TO_BEANS || github.event.client_payload.MARKET_COIN_TO_BEANS }} # 京小超兑换京豆数量，可输入值为20或者1000的数字或者其他商品的名称,例如碧浪洗衣凝珠
+                  MARKET_REWARD_NOTIFY: ${{ secrets.MARKET_REWARD_NOTIFY || github.event.client_payload.MARKET_REWARD_NOTIFY }} # 京小超兑换奖品推送开关，false为否(发送推送通知消息),true为是(即：不发送推送通知消息)
+                  SUPERMARKET_UPGRADE: ${{ secrets.SUPERMARKET_UPGRADE || github.event.client_payload.SUPERMARKET_UPGRADE }} # 京小超自动升级，自动升级,顺序:解锁升级商品、升级货架,true表示自动升级,false表示关闭自动升级
+                  BUSINESS_CIRCLE_JUMP: ${{ secrets.BUSINESS_CIRCLE_JUMP || github.event.client_payload.BUSINESS_CIRCLE_JUMP }} # 京小超自动更换商圈，小于对方300热力值自动更换商圈队伍,true表示运行,false表示禁止
+                  SUPERMARKET_LOTTERY: ${{ secrets.SUPERMARKET_LOTTERY || github.event.client_payload.SUPERMARKET_LOTTERY }} # 京小超抽奖，每天运行脚本是否使用金币去抽奖,true表示抽奖,false表示不抽奖
