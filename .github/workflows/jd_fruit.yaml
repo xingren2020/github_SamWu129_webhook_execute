@@ -9,7 +9,7 @@ on:
         types: [started]
     repository_dispatch:
         types: jd_fruit
-        
+
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -37,8 +37,15 @@ jobs:
                   TG_USER_ID: ${{ secrets.TG_USER_ID || github.event.client_payload.TG_USER_ID }}
                   DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN || github.event.client_payload.DD_BOT_TOKEN }}
                   DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET || github.event.client_payload.DD_BOT_SECRET }}
+                  IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY || github.event.client_payload.IGOT_PUSH_KEY }}
+                  QQ_SKEY: ${{ secrets.QQ_SKEY || github.event.client_payload.QQ_SKEY }}
+                  QQ_MODE: ${{ secrets.QQ_MODE || github.event.client_payload.QQ_MODE }}
+                  PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN || github.event.client_payload.PUSH_PLUS_TOKEN }}
+                  PUSH_PLUS_USER: ${{ secrets.PUSH_PLUS_USER || github.event.client_payload.PUSH_PLUS_USER }}
+                  JD_COOKIE: ${{ secrets.JD_COOKIE || github.event.client_payload.JD_COOKIE }}
+                  JD_DEBUG: ${{ secrets.JD_DEBUG || github.event.client_payload.JD_DEBUG }}
+                  DO_NOT_FORK: ${{ secrets.DO_NOT_FORK || github.event.client_payload.DO_NOT_FORK }}
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_fruit.js
                   FRUIT_BEAN_CARD: ${{ secrets.FRUIT_BEAN_CARD || github.event.client_payload.FRUIT_BEAN_CARD }}
                   FRUITSHARECODES: ${{ secrets.FruitShareCodes || github.event.client_payload.FruitShareCodes }}
                   FRUIT_NOTIFY_CONTROL: ${{ secrets.FRUIT_NOTIFY_CONTROL || github.event.client_payload.FRUIT_NOTIFY_CONTROL }}
-                  DO_NOT_FORK: ${{ secrets.DO_NOT_FORK || github.event.client_payload.DO_NOT_FORK }}
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_fruit.js
