@@ -62,7 +62,7 @@ function inject_jd_autoShareCode(type) {
         pet: {
             isAsync: false,
             uuid: "$.petInfo.shareCode",
-            match: "console.log(`\\n【您的互助码shareCode】 ${$.petInfo.shareCode}\\n`);",
+            match: "console.log(`\\n【您的${$.name}互助码shareCode】 ${$.petInfo.shareCode}\\n`);",
             link: "https://github.com/lxk0301/jd_scripts/raw/master/jd_pet.js",
         },
         jdzz: {
