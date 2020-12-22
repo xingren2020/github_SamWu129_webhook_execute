@@ -1,14 +1,14 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: 京东种豆得豆
+name: 京东注销店铺会员
 
 on:
     workflow_dispatch:
     watch:
         types: [started]
     repository_dispatch:
-        types: jd_plantBean
+        types: jd_unbind
 
 jobs:
     build:
@@ -24,7 +24,7 @@ jobs:
             - name: 安装依赖包
               run: |
                   npm install
-            - name: "运行 【种豆得豆】"
+            - name: "运行 【注销店铺会员】"
               run: |
                   node execute.js
               env:
@@ -45,6 +45,4 @@ jobs:
                   JD_COOKIE: ${{ secrets.JD_COOKIE || github.event.client_payload.JD_COOKIE }}
                   JD_DEBUG: ${{ secrets.JD_DEBUG || github.event.client_payload.JD_DEBUG }}
                   DO_NOT_FORK: ${{ secrets.DO_NOT_FORK || github.event.client_payload.DO_NOT_FORK }}
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_plantBean.js
-                  #独立配置
-                  PLANT_BEAN_SHARECODES: ${{ secrets.PLANT_BEAN_SHARECODES || github.event.client_payload.PLANT_BEAN_SHARECODES }}
+                  SYNCURL: https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_unbind.js
