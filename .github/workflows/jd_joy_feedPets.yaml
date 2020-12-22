@@ -36,7 +36,6 @@ jobs:
                   TG_USER_ID: ${{ secrets.TG_USER_ID || github.event.client_payload.TG_USER_ID }}
                   DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN || github.event.client_payload.DD_BOT_TOKEN }}
                   DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET || github.event.client_payload.DD_BOT_SECRET }}
-                  JOY_FEED_COUNT: ${{ secrets.JOY_FEED_COUNT || github.event.client_payload.JOY_FEED_COUNT }}
                   IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY || github.event.client_payload.IGOT_PUSH_KEY }}
                   QQ_SKEY: ${{ secrets.QQ_SKEY || github.event.client_payload.QQ_SKEY }}
                   QQ_MODE: ${{ secrets.QQ_MODE || github.event.client_payload.QQ_MODE }}
