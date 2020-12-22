@@ -25,6 +25,7 @@ jobs:
               run: |
                   node execute.js
               env:
+                  #推送专用
                   PUSH_KEY: ${{ secrets.PUSH_KEY || github.event.client_payload.PUSH_KEY }}
                   BARK_PUSH: ${{ secrets.BARK_PUSH || github.event.client_payload.BARK_PUSH }}
                   BARK_SOUND: ${{ secrets.BARK_SOUND || github.event.client_payload.BARK_SOUND }}
