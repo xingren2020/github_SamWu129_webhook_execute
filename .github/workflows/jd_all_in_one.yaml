@@ -231,9 +231,11 @@ jobs:
                   WATCH_ACCEPTBODY: ${{ secrets.WATCH_ACCEPTBODY || github.event.client_payload.WATCH_ACCEPTBODY }}
                   WATCH_DOBODY: ${{ secrets.WATCH_DOBODY || github.event.client_payload.WATCH_DOBODY }}
 
-            - name: "运行 【京东crazy joy】未知/账号"
+            - name: "运行 【京东CrazyJoy日常任务】未知/账号"
               timeout-minutes: 30
               run: |
                   node execute.js
               env:
                   SYNCURL: https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_crazy_joy.js
+                  JDJOY_HELPSELF: ${{ secrets.JDJOY_HELPSELF || github.event.client_payload.JDJOY_HELPSELF }} # 疯狂的joy循环助力，`true`表示循环助力,`false`表示不循环助力，默认不开启循环助力。
+                  JDJOY_APPLYJDBEAN: ${{ secrets.JDJOY_APPLYJDBEAN || github.event.client_payload.JDJOY_APPLYJDBEAN }} # 疯狂的joy京豆兑换，目前最小值为500/1000京豆，默认不开启京豆兑换。
