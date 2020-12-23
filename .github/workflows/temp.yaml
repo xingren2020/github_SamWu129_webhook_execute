@@ -5,6 +5,8 @@ name: 临时执行
 
 on:
     workflow_dispatch:
+    schedule:
+        - cron: "0 2,9,19 * * *"
     watch:
         types: [started]
     repository_dispatch:

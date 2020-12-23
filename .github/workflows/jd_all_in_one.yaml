@@ -231,7 +231,7 @@ jobs:
                   WATCH_ACCEPTBODY: ${{ secrets.WATCH_ACCEPTBODY || github.event.client_payload.WATCH_ACCEPTBODY }}
                   WATCH_DOBODY: ${{ secrets.WATCH_DOBODY || github.event.client_payload.WATCH_DOBODY }}
 
-            - name: "运行 【京东CrazyJoy日常任务】未知/账号"
+            - name: "运行 【京东CrazyJoy日常任务】2min/账号"
               timeout-minutes: 30
               run: |
                   node execute.js
