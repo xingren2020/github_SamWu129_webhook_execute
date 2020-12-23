@@ -230,3 +230,10 @@ jobs:
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_watch.js
                   WATCH_ACCEPTBODY: ${{ secrets.WATCH_ACCEPTBODY || github.event.client_payload.WATCH_ACCEPTBODY }}
                   WATCH_DOBODY: ${{ secrets.WATCH_DOBODY || github.event.client_payload.WATCH_DOBODY }}
+
+            - name: "运行 【京东crazy joy】未知/账号"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_crazy_joy.js
