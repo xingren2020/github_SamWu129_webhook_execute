@@ -24,10 +24,10 @@ const stupid = require("./stupid");
     console.log("执行完毕");
 })()
     .catch((e) => {
-      $.log('', `❌ 执行失败! 原因: ${e}!`, '')
+      console.log(`❌ 执行失败! 原因: ${e}!`);
     })
     .finally(() => {
-      $.done();
+      console.log('结束脚本执行');
     })
 
 function inject_env() {
