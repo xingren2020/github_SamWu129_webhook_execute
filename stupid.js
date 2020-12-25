@@ -77,6 +77,14 @@ function inject_jd_autoShareCode(type) {
             api: "https://code.chiang.fun/api/v1/jd/jdzz/create/",
             link: "https://github.com/lxk0301/jd_scripts/raw/master/jd_jdzz.js",
         },
+        crazyjoy: {
+            isAsync: true,
+            uuid: "data.data.userInviteCode",
+            match:
+                "console.log(`\\n【京东账号${$.index}（${$.nickName || $.UserName}）的${$.name}好友互助码】${data.data.userInviteCode}`)",
+            api: "https://code.chiang.fun/api/v1/jd/jdcrazyjoy/create/",
+            link: "https://github.com/lxk0301/jd_scripts/raw/master/jd_crazy_joy.js",
+        },
     };
     let target = pointer[type];
 
@@ -184,6 +192,9 @@ async function downloader_jd() {
     }
     if (remoteContent.indexOf("new Env('京东赚赚')") > 0) {
         inject_jd_autoShareCode("jdzz");
+    }
+    if (remoteContent.indexOf("new Env('crazyJoy任务')") > 0) {
+        inject_jd_autoShareCode("crazyjoy");
     }
 }
 
