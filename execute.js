@@ -6,6 +6,7 @@ const stupid = require("./stupid");
 !(async () => {
     console.log(`国际时间 (UTC+00)：${new Date().toLocaleString()}`);
     console.log(`北京时间 (UTC+08)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}\n`);
+    inject_env();
     if (!process.env.SYNCURL) {
         console.log("请填写 SYNCURL 后在继续");
         return;
@@ -24,15 +25,23 @@ const stupid = require("./stupid");
     console.log("执行完毕");
 })()
     .catch((e) => {
-      console.log(`❌ 执行失败! 原因: ${e}!`);
+        console.log(`❌ 执行失败! 原因: ${e}!`);
     })
     .finally(() => {
-      console.log('结束脚本执行');
-    })
+        console.log("结束脚本执行");
+    });
 
 function inject_env() {
-    if (process.env.ENVS_FROM_WEBHOOK) {
-        
+    if (!process.env.ENVS_FROM_WEBHOOK) return;
+    try {
+        console.log("检测到Webhook参数,注入env中");
+        var envs = JSON.parse(process.env.ENVS_FROM_WEBHOOK);
+        var keys = Object.keys(envs);
+        for (var key in keys) {
+            process.env[key] = envs[key];
+        }
+    } catch (e) {
+        console.log(`❌ 注入环境变量失败! 原因: ${e}!`);
     }
 }
 
