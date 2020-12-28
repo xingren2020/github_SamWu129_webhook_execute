@@ -6,7 +6,7 @@ const stupid = require("./stupid");
 !(async () => {
     console.log(`国际时间 (UTC+00)：${new Date().toLocaleString()}`);
     console.log(`北京时间 (UTC+08)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}\n`);
-    inject_env();
+    // inject_env();
     if (!process.env.SYNCURL) {
         console.log("请填写 SYNCURL 后在继续");
         return;

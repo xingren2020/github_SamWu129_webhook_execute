@@ -144,7 +144,7 @@ function batchReplace() {
 async function downloader_jd() {
     if (/require\(['"`]{1}.\/jdCookie.js['"`]{1}\)/.test(remoteContent))
         await download("https://github.com/lxk0301/jd_scripts/raw/master/jdCookie.js", "./jdCookie.js", "京东Cookies");
-    if (remoteContent.indexOf("jdFruitShareCodes") > 0) {
+    if (remoteContent.indexOf("new Env('东东农场')") > 0) {
         await download(
             "https://github.com/lxk0301/jd_scripts/raw/master/jdFruitShareCodes.js",
             "./jdFruitShareCodes.js",
@@ -152,7 +152,7 @@ async function downloader_jd() {
         );
         inject_jd_autoShareCode("farm");
     }
-    if (remoteContent.indexOf("jdPetShareCodes") > 0) {
+    if (remoteContent.indexOf("new Env('东东萌宠')") > 0) {
         await download(
             "https://github.com/lxk0301/jd_scripts/raw/master/jdPetShareCodes.js",
             "./jdPetShareCodes.js",
@@ -160,7 +160,7 @@ async function downloader_jd() {
         );
         inject_jd_autoShareCode("pet");
     }
-    if (remoteContent.indexOf("jdPlantBeanShareCodes") > 0) {
+    if (remoteContent.indexOf("new Env('京东种豆得豆')") > 0) {
         await download(
             "https://github.com/lxk0301/jd_scripts/raw/master/jdPlantBeanShareCodes.js",
             "./jdPlantBeanShareCodes.js",
@@ -168,13 +168,13 @@ async function downloader_jd() {
         );
         inject_jd_autoShareCode("bean");
     }
-    if (remoteContent.indexOf("jdSuperMarketShareCodes") > 0)
-        await download(
-            "https://github.com/lxk0301/jd_scripts/raw/master/jdSuperMarketShareCodes.js",
-            "./jdSuperMarketShareCodes.js",
-            "京小超互助码"
-        );
-    if (remoteContent.indexOf("jdFactoryShareCodes") > 0) {
+    // if (remoteContent.indexOf("jdSuperMarketShareCodes") > 0)
+    //     await download(
+    //         "https://github.com/lxk0301/jd_scripts/raw/master/jdSuperMarketShareCodes.js",
+    //         "./jdSuperMarketShareCodes.js",
+    //         "京小超互助码"
+    //     );
+    if (remoteContent.indexOf("new Env('东东工厂')") > 0) {
         await download(
             "https://github.com/lxk0301/jd_scripts/raw/master/jdFactoryShareCodes.js",
             "./jdFactoryShareCodes.js",
