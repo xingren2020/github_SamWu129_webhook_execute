@@ -122,13 +122,6 @@ jobs:
               env:
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_bean_home.js
 
-            - name: "运行 【京东健康】30s/账号"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_jdh.js
-
             - name: "运行 【京东赚赚】30s/账号"
               timeout-minutes: 30
               run: |
