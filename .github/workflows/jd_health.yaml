@@ -1,4 +1,4 @@
-name: 东东工厂
+name: 京东健康
 
 on:
     workflow_dispatch:
@@ -23,7 +23,7 @@ jobs:
             - name: 安装依赖包
               run: |
                   npm install
-            - name: "运行【东东工厂】"
+            - name: "运行【京东健康】"
               run: |
                   node execute.js
               env:
