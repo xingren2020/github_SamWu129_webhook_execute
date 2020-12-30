@@ -38,42 +38,48 @@ function inject_jd_autoShareCode(type) {
         ddfactory: {
             isAsync: true, //是否异步执行
             uuid: "item.assistTaskDetailVo.taskToken",
-            match: "console.log(`\\n您的${$.name}好友助力邀请码：${item.assistTaskDetailVo.taskToken}\\n`)",
+            match:
+                "console.log(`\\n【京东账号${$.index}（${$.nickName || $.UserName}）的${$.name}好友互助码】${item.assistTaskDetailVo.taskToken}\\n`)",
             api: "http://api.turinglabs.net/api/v1/jd/ddfactory/create/",
             link: "https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_jdfactory.js", //没啥用,用于快捷定位
         },
         jxfactory: {
             isAsync: true,
             uuid: "data.user.encryptPin",
-            match: "console.log(`分享码: ${data.user.encryptPin}`);",
+            match:
+                "console.log(`\\n【京东账号${$.index}（${$.nickName || $.UserName}）的${$.name}好友互助码】${data.user.encryptPin}`);",
             api: "http://api.turinglabs.net/api/v1/jd/jxfactory/create/",
             link: "https://github.com/lxk0301/jd_scripts/raw/master/jd_dreamFactory.js",
         },
         bean: {
             isAsync: false,
             uuid: "$.myPlantUuid",
-            match: "console.log(`\\n【您的${$.name}互助码】 ${$.myPlantUuid}\\n`);",
+            match:
+                "console.log(`\\n【京东账号${$.index}（${$.nickName || $.UserName}）的${$.name}好友互助码】${$.myPlantUuid}\\n`);",
             api: "http://api.turinglabs.net/api/v1/jd/bean/create/",
             link: "https://github.com/lxk0301/jd_scripts/raw/master/jd_plantBean.js",
         },
         farm: {
             isAsync: false,
             uuid: "$.farmInfo.farmUserPro.shareCode",
-            match: "console.log(`\\n【您的${$.name}互助码shareCode】 ${$.farmInfo.farmUserPro.shareCode}\\n`);",
+            match:
+                "console.log(`\\n【京东账号${$.index}（${$.nickName || $.UserName}）的${$.name}好友互助码】${$.farmInfo.farmUserPro.shareCode}\\n`);",
             api: "http://api.turinglabs.net/api/v1/jd/farm/create/",
             link: "https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_fruit.js",
         },
         pet: {
             isAsync: false,
             uuid: "$.petInfo.shareCode",
-            match: "console.log(`\\n【您的${$.name}互助码shareCode】 ${$.petInfo.shareCode}\\n`);",
+            match:
+                "console.log(`\\n【京东账号${$.index}（${$.nickName || $.UserName}）的${$.name}好友互助码】${$.petInfo.shareCode}\\n`);",
             api: "http://api.turinglabs.net/api/v1/jd/pet/create/",
             link: "https://github.com/lxk0301/jd_scripts/raw/master/jd_pet.js",
         },
         jdzz: {
             isAsync: true,
             uuid: "data.data.shareTaskRes.itemId",
-            match: "console.log(`\\n您的${$.name}好友助力码为： ${data.data.shareTaskRes.itemId}\\n`);",
+            match:
+                "console.log(`\\n【京东账号${$.index}（${$.nickName || $.UserName}）的${$.name}好友互助码】${data.data.shareTaskRes.itemId}\\n`);",
             api: "https://code.chiang.fun/api/v1/jd/jdzz/create/",
             link: "https://github.com/lxk0301/jd_scripts/raw/master/jd_jdzz.js",
         },
