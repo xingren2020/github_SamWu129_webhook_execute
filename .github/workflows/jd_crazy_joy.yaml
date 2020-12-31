@@ -1,14 +1,16 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: 临时执行
+name: 疯狂的JOY
 
 on:
     workflow_dispatch:
+    schedule:
+        - cron: "0 1 * * *"
     watch:
         types: [started]
     repository_dispatch:
-        types: jd_temp
+        types: jd_crazy_joy
 
 jobs:
     build:
@@ -46,4 +48,4 @@ jobs:
                   JD_COOKIE: ${{ github.event.client_payload.JD_COOKIE || secrets.JD_COOKIE }}
                   JD_DEBUG: ${{ github.event.client_payload.JD_DEBUG || secrets.JD_DEBUG }}
                   DO_NOT_FORK: ${{ github.event.client_payload.DO_NOT_FORK || secrets.DO_NOT_FORK }}
-                  SYNCURL: ${{ github.event.client_payload.SYNCURL || secrets.SYNCURL }}
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_crazy_joy_coin.js
