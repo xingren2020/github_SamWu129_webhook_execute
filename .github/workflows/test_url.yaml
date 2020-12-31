@@ -6,7 +6,7 @@ name: 测试链接执行
 on:
     workflow_dispatch:
     schedule:
-        - cron: "0 2,9,19 * * *"
+        - cron: "5 19 1,10,20 * *" # 每月1/10/20号凌晨三点零五分跑一次互助码自动提交
     watch:
         types: [started]
     repository_dispatch:
