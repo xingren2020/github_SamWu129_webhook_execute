@@ -170,20 +170,6 @@ jobs:
               env:
                   SYNCURL: https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_apple_live.js
 
-            - name: "运行 【京东秒杀红包雨】- 1231"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_ms_redrain.js
-
-            - name: "运行 【金融打卡领年终奖】- 1231"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jr_sign.js
-
             - name: "运行 【京东健康】(3min/账号)"
               timeout-minutes: 30
               run: |
@@ -205,24 +191,6 @@ jobs:
               env:
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_unsubscribe.js
                   UN_SUBSCRIBES: ${{ github.event.client_payload.UN_SUBSCRIBES || secrets.UN_SUBSCRIBES }} # 共四个参数,换行隔开. 四个参数分别表示取关商品数量,取关店铺数量,遇到此商品不再进行取关, 遇到此店铺不再进行取关
-
-            - name: "运行 【京东看一看】8min/账号"
-              timeout-minutes: 60
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_watch.js
-                  WATCH_ACCEPTBODY: ${{ github.event.client_payload.WATCH_ACCEPTBODY || secrets.WATCH_ACCEPTBODY }} # 京东看一看,抓包functionId=discAcceptTask(需40个，每个之间使用@符号隔开)
-                  WATCH_DOBODY: ${{ github.event.client_payload.WATCH_DOBODY || secrets.WATCH_DOBODY }} # 京东看一看,抓包functionId=discDoTask(需40个，每个之间使用@符号隔开)
-
-            - name: "运行 【京东看一看收尾】1min/账号"
-              timeout-minutes: 20
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_watch.js
-                  WATCH_ACCEPTBODY: ${{ github.event.client_payload.WATCH_ACCEPTBODY || secrets.WATCH_ACCEPTBODY }}
-                  WATCH_DOBODY: ${{ github.event.client_payload.WATCH_DOBODY || secrets.WATCH_DOBODY }}
 
             - name: "运行 【京东CrazyJoy日常任务】2min/账号"
               timeout-minutes: 30
