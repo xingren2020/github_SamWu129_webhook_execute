@@ -43,3 +43,5 @@ jobs:
                   JD_DEBUG: ${{ github.event.client_payload.JD_DEBUG || secrets.JD_DEBUG }}
                   DO_NOT_FORK: ${{ github.event.client_payload.DO_NOT_FORK || secrets.DO_NOT_FORK }}
                   SYNCURL: https://github.com/MoPoQAQ/Script/raw/main/Me/jx_cfd.js
+                  #独立配置
+                  CFD_NOTIFY_CONTROL: ${{ github.event.client_payload.CFD_NOTIFY_CONTROL || secrets.CFD_NOTIFY_CONTROL }} #控制财富岛是否推送通知
