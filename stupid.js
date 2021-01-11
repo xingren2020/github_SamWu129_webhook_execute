@@ -202,7 +202,7 @@ async function downloader_jd() {
     if (remoteContent.indexOf("new Env('crazyJoy任务')") > 0) {
         inject_jd_autoShareCode("crazyjoy");
     }
-    if (reniteCintent.indexOf("new Env('京喜农场')") > 0) {
+    if (remoteContent.indexOf("new Env('京喜农场')") > 0) {
         await download(
             "https://github.com/lxk0301/jd_scripts/raw/master/jdJxncTokens.js",
             "./jdJxncTokens.js",
