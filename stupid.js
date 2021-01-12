@@ -28,6 +28,11 @@ async function inject_jd() {
             value: `outPutUrl = err ? './tmp/' : outPutUrl;`,
         });
     }
+    ignore_jd();
+    await downloader_jd();
+    await downloader_notify();
+}
+function ignore_jd() {
     // 京喜农场禁用部分Cookie，以避免被频繁通知需要去种植啥的
     if (process.env.IGNORE_COOKIE_JXNC) {
         try {
@@ -41,18 +46,37 @@ async function inject_jd() {
                 }
             });
             replacements.push({
-                key: "if (jdJxncShareCodeNode[item]) {",
-                value: `if (jdJxncShareCodeNode[item] && ${JSON.stringify(
-                    ignore_names
-                )}.indexOf(item) == -1) { console.log(item);`,
+                key: "if (jdCookieNode[item]) {",
+                value: `if (jdCookieNode[item] && ${JSON.stringify(ignore_names)}.indexOf(item) == -1) {`,
             });
             console.log(`IGNORE_COOKIE_JXNC已生效，将为您禁用${ignore_names}`);
         } catch (e) {
             console.log("IGNORE_COOKIE_JXNC填写有误,不禁用任何Cookie");
         }
     }
-    await downloader_jd();
-    await downloader_notify();
+    // 京喜工厂禁用部分Cookie，以避免被频繁通知需要去种植啥的
+    if (process.env.IGNORE_COOKIE_JXGC) {
+        try {
+            var ignore_indexs = JSON.parse(process.env.IGNORE_COOKIE_JXGC);
+            var ignore_names = [];
+            ignore_indexs.forEach((it) => {
+                if (it == 1) {
+                    ignore_names.push("CookieJD");
+                } else {
+                    ignore_names.push("CookieJD" + it);
+                }
+            });
+            replacements.push({
+                key: "cookiesArr.push(jdCookieNode[item])",
+                value: `if (jdCookieNode[item] && ${JSON.stringify(
+                    ignore_names
+                )}.indexOf(item) == -1) cookiesArr.push(jdCookieNode[item])`,
+            });
+            console.log(`IGNORE_COOKIE_JXNC已生效，将为您禁用${ignore_names}`);
+        } catch (e) {
+            console.log("IGNORE_COOKIE_JXNC填写有误,不禁用任何Cookie");
+        }
+    }
 }
 /** 自动注入分享码 */
 function inject_jd_autoShareCode(type) {
