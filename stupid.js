@@ -264,8 +264,14 @@ function batchReplace() {
 //#region 文件下载
 
 async function downloader_jd() {
-    if (/require\(['"`]{1}.\/jdCookie.js['"`]{1}\)/.test(remoteContent))
+    if (/require\(['"`]{1}.\/jdCookie.js['"`]{1}\)/.test(remoteContent)) {
         await download("https://github.com/lxk0301/jd_scripts/raw/master/jdCookie.js", "./jdCookie.js", "京东Cookies");
+        await download(
+            "https://github.com/lxk0301/jd_scripts/raw/master/USER_AGENTS.js",
+            "./USER_AGENTS.js",
+            "USER_AGENTS"
+        );
+    }
     if (remoteContent.indexOf("new Env('东东农场')") > 0) {
         await download(
             "https://github.com/lxk0301/jd_scripts/raw/master/jdFruitShareCodes.js",
@@ -328,11 +334,6 @@ async function downloader_jd() {
             "https://github.com/lxk0301/jd_scripts/raw/master/jdJxncShareCodes.js",
             "./jdJxncShareCodes.js",
             "京喜农场分享码"
-        );
-        await download(
-            "https://github.com/lxk0301/jd_scripts/raw/master/USER_AGENTS.js",
-            "./USER_AGENTS.js",
-            "USER_AGENTS"
         );
     }
 }
