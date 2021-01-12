@@ -5,7 +5,6 @@ const stupid = require("../stupid");
 async function downloadFile() {
     let response = await axios.get(process.env.SYNCURL);
     let content = response.data;
-    content = content.replace("console.log(`\\n【您的互助码shareCode】 ${$.petInfo.shareCode}\\n`);", "//已替换的代码");
     content = await stupid.inject(content);
     console.log(content);
     return "end";
