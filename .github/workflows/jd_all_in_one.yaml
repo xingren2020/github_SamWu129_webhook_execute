@@ -48,13 +48,6 @@ jobs:
                   node execute.js
               env:
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_shop.js
-                  
-            - name: "运行 【京东现金】未知/账号"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_cash.js
 
             - name: "运行【京东十元街】(2s/账号)"
               timeout-minutes: 30
@@ -128,6 +121,20 @@ jobs:
                   node execute.js
               env:
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_bean_home.js
+
+            - name: "运行 【京喜签到】40s/账号"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jx_sign.js
+
+            - name: "运行 【京东现金】25s/账号"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_cash.js
 
             - name: "运行 【京东赚赚】30s/账号"
               timeout-minutes: 30
