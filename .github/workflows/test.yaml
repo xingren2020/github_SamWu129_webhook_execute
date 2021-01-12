@@ -25,7 +25,7 @@ jobs:
             - name: "运行 【测试代码】"
               timeout-minutes: 350
               run: |
-                  node execute.js
+                  node test/test.js
               env:
                   #推送专用
                   PUSH_KEY: ${{ github.event.client_payload.PUSH_KEY || secrets.PUSH_KEY }}
