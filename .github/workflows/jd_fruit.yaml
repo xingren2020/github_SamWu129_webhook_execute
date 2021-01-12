@@ -47,6 +47,7 @@ jobs:
                   DO_NOT_FORK: ${{ github.event.client_payload.DO_NOT_FORK || secrets.DO_NOT_FORK }}
                   SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_fruit.js
                   #独立配置
+                  IGNORE_COOKIE_JDNC: ${{ github.event.client_payload.IGNORE_COOKIE_JDNC || secrets.IGNORE_COOKIE_JDNC }} #京东农场禁用某些cookie的执行,因为通知太烦了呀,比如要禁用第2和第四个的执行,则填入[2,4]即可,包含中括号哦
                   FRUIT_BEAN_CARD: ${{ github.event.client_payload.FRUIT_BEAN_CARD || secrets.FRUIT_BEAN_CARD }} # 农场使用水滴换豆卡(如果出现限时活动时100g水换20豆,此时比浇水划算,推荐换豆),true表示换豆(不浇水),false表示不换豆(继续浇水),脚本默认是浇水
                   FRUITSHARECODES: ${{ github.event.client_payload.FRUITSHARECODES || secrets.FRUITSHARECODES }} # 东东农场互助码
                   FRUIT_NOTIFY_CONTROL: ${{ github.event.client_payload.FRUIT_NOTIFY_CONTROL || secrets.FRUIT_NOTIFY_CONTROL }} #东东农场推送开关,控制京东农场是否静默运行,false为否(发送推送通知消息),true为是(即：不发送推送通知消息)

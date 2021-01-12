@@ -22,6 +22,7 @@ jobs:
               run: |
                   npm install
             - name: "运行【京喜财富岛】"
+              timeout-minutes: 60
               run: |
                   node execute.js
               env:
