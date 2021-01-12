@@ -42,11 +42,9 @@ async function inject_jd() {
             });
             replacements.push({
                 key: "if (jdJxncShareCodeNode[item]) {",
-                value: `if (jdJxncShareCodeNode[item] && ${JSON.stringify(
-                    ignore_indexs
-                )}.indexOf(item) == -1) {`,
+                value: `if (jdJxncShareCodeNode[item] && ${JSON.stringify(ignore_names)}.indexOf(item) == -1) {`,
             });
-            console.log(`IGNORE_COOKIE_JXNC已生效，将为您禁用${ignore_indexs}`);
+            console.log(`IGNORE_COOKIE_JXNC已生效，将为您禁用${ignore_names}`);
         } catch (e) {
             console.log("IGNORE_COOKIE_JXNC填写有误,不禁用任何Cookie");
         }
