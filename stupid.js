@@ -28,6 +28,29 @@ async function inject_jd() {
             value: `outPutUrl = err ? './tmp/' : outPutUrl;`,
         });
     }
+    // 京喜农场禁用部分Cookie，以避免被频繁通知需要去种植啥的
+    if (process.env.IGNORE_COOKIE_JXNC) {
+        try {
+            var ignore_indexs = JSON.parse(process.env.IGNORE_COOKIE_JXNC);
+            var ignore_names = [];
+            ignore_indexs.forEach((it) => {
+                if (it == 1) {
+                    ignore_names.push("CookieJD");
+                } else {
+                    ignore_names.push("CookieJD" + it);
+                }
+            });
+            replacements.push({
+                key: "if (jdJxncShareCodeNode[item]) {",
+                value: `if (jdJxncShareCodeNode[item] && ${JSON.stringify(
+                    ignore_indexs
+                )}.indexOf(item) == -1) {`,
+            });
+            console.log(`IGNORE_COOKIE_JXNC已生效，将为您禁用${ignore_indexs}`);
+        } catch (e) {
+            console.log("IGNORE_COOKIE_JXNC填写有误,不禁用任何Cookie");
+        }
+    }
     await downloader_jd();
     await downloader_notify();
 }
