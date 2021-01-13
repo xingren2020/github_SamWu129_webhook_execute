@@ -192,13 +192,6 @@ jobs:
                   BUSINESS_CIRCLE_JUMP: ${{ github.event.client_payload.BUSINESS_CIRCLE_JUMP || secrets.BUSINESS_CIRCLE_JUMP }} # 京小超自动更换商圈，小于对方300热力值自动更换商圈队伍,true表示运行,false表示禁止
                   SUPERMARKET_LOTTERY: ${{ github.event.client_payload.SUPERMARKET_LOTTERY || secrets.SUPERMARKET_LOTTERY }} # 京小超抽奖，每天运行脚本是否使用金币去抽奖,true表示抽奖,false表示不抽奖
 
-            - name: "运行 【苹果抽奖机】- 1214"
-              timeout-minutes: 30
-              run: |
-                  node execute.js
-              env:
-                  SYNCURL: https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_apple_live.js
-
             - name: "运行 【东东抽奖机+新店福利+东东福利屋+东东生活+闪购盲盒+疯狂砸金蛋】(9min/账号)"
               timeout-minutes: 60
               run: |
