@@ -44,6 +44,12 @@ jobs:
             - name: 安装依赖包
               run: |
                   npm install
+            - name: "运行 【京东家庭号】4s/账号"
+              timeout-minutes: 30
+              run: |
+                  node execute.js
+              env:
+                  SYNCURL: https://raw.githubusercontent.com/shylocks/Loon/main/jd_family.js
 
             - name: "运行 【京东进店领豆】4s/账号"
               timeout-minutes: 30
