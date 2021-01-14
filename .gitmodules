@@ -1,0 +1,4 @@
+[submodule "jd_scripts"]
+	path = jd_scripts
+	url = git@gitee.com:lxk0301/jd_scripts.git
+	branch = master
