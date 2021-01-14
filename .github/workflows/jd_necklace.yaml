@@ -45,4 +45,4 @@ jobs:
                   JD_USER_AGENT: ${{ github.event.client_payload.JD_USER_AGENT || secrets.JD_USER_AGENT }}
                   JD_DEBUG: ${{ github.event.client_payload.JD_DEBUG || secrets.JD_DEBUG }}
                   DO_NOT_FORK: ${{ github.event.client_payload.DO_NOT_FORK || secrets.DO_NOT_FORK }}
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_necklace.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_necklace.js

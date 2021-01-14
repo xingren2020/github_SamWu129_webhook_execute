@@ -48,7 +48,7 @@ jobs:
                   JD_USER_AGENT: ${{ github.event.client_payload.JD_USER_AGENT || secrets.JD_USER_AGENT }}
                   JD_DEBUG: ${{ github.event.client_payload.JD_DEBUG || secrets.JD_DEBUG }}
                   DO_NOT_FORK: ${{ github.event.client_payload.DO_NOT_FORK || secrets.DO_NOT_FORK }}
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_superMarket.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_superMarket.js
                   #独立配置
                   MARKET_COIN_TO_BEANS: ${{ github.event.client_payload.MARKET_COIN_TO_BEANS || secrets.MARKET_COIN_TO_BEANS }} # 京小超兑换京豆数量，可输入值为20或者1000的数字或者其他商品的名称,例如碧浪洗衣凝珠
                   MARKET_REWARD_NOTIFY: ${{ github.event.client_payload.MARKET_REWARD_NOTIFY || secrets.MARKET_REWARD_NOTIFY }} # 京小超兑换奖品推送开关，false为否(发送推送通知消息),true为是(即：不发送推送通知消息)

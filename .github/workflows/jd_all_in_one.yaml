@@ -50,42 +50,42 @@ jobs:
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_shop.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_shop.js
 
             - name: "运行【京东十元街】(2s/账号)"
               timeout-minutes: 30
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_syj.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_syj.js
 
             - name: "运行 【京豆昨日收益】(5s/账号)"
               timeout-minutes: 30
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_bean_change.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_bean_change.js
 
             - name: "运行 【京东快递】(3s/账号)"
               timeout-minutes: 30
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_kd.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_kd.js
 
             - name: "运行 【京东金融天天提额】(5s/账号)"
               timeout-minutes: 30
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_daily_egg.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_daily_egg.js
 
             - name: "运行 【京东汽车】(10s/账号)"
               timeout-minutes: 30
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_car.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_car.js
 
             - name: "运行 【京东排行榜】(15s/账号)"
               timeout-minutes: 30
@@ -106,14 +106,14 @@ jobs:
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_club_lottery.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_club_lottery.js
 
             - name: "运行 【京东每日签到】(30s/账号)"
               timeout-minutes: 30
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_bean_sign.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_bean_sign.js
                   JD_BEAN_STOP: ${{ github.event.client_payload.JD_BEAN_STOP || secrets.JD_BEAN_STOP }} # 自定义延迟签到,单位毫秒. 默认分批并发无延迟. 延迟作用于每个签到接口, 如填入延迟则切换顺序签到(耗时较长),如需填写建议输入数字1
                   JD_BEAN_SIGN_STOP_NOTIFY: ${{ secrets.JD_BEAN_SIGN_STOP_NOTIFY || github.event.client_payload.JD_BEAN_SIGN_STOP_NOTIFY}} # jd_bean_sign.js脚本运行后不推送签到结果通知，默认推送，填true表示不发送通知
                   JD_BEAN_SIGN_NOTIFY_SIMPLE: ${{ secrets.JD_BEAN_SIGN_NOTIFY_SIMPLE || github.event.client_payload.JD_BEAN_SIGN_NOTIFY_SIMPLE}} # jd_bean_sign.js脚本运行后推送签到结果简洁版通知，默认推送全部签到结果，填true表示推送简洁通知
@@ -123,21 +123,21 @@ jobs:
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_bean_home.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_bean_home.js
 
             - name: "运行 【京喜签到】40s/账号"
               timeout-minutes: 30
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jx_sign.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jx_sign.js
 
             - name: "运行 【京东现金】25s/账号"
               timeout-minutes: 30
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_cash.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_cash.js
 
             - name: "运行 【京东家庭号】30s/账号"
               timeout-minutes: 30
@@ -151,7 +151,7 @@ jobs:
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_jdzz.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_jdzz.js
                   JDZZ_SHARECODES: ${{ github.event.client_payload.JDZZ_SHARECODES || secrets.JDZZ_SHARECODES }} # 京东赚赚(jd_jdzz.js)脚本互助码
 
             - name: "运行 【京东金融养猪猪】(35s/账号)"
@@ -159,7 +159,7 @@ jobs:
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_pigPet.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_pigPet.js
 
             - name: "运行【泡泡大战】(45s/账号)"
               timeout-minutes: 30
@@ -180,21 +180,21 @@ jobs:
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_nh.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_nh.js
 
             - name: "运行 【东东小窝】(60s/账号)"
               timeout-minutes: 30
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_small_home.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_small_home.js
 
             - name: "运行【京小超领蓝币(小费)】(90s/账号)"
               timeout-minutes: 30
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_blueCoin.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_blueCoin.js
                   MARKET_COIN_TO_BEANS: ${{ github.event.client_payload.MARKET_COIN_TO_BEANS || secrets.MARKET_COIN_TO_BEANS }} # 京小超兑换京豆数量，可输入值为20或者1000的数字或者其他商品的名称,例如碧浪洗衣凝珠
                   MARKET_REWARD_NOTIFY: ${{ github.event.client_payload.MARKET_REWARD_NOTIFY || secrets.MARKET_REWARD_NOTIFY }} # 京小超兑换奖品推送开关，false为否(发送推送通知消息),true为是(即：不发送推送通知消息)
                   SUPERMARKET_UPGRADE: ${{ github.event.client_payload.SUPERMARKET_UPGRADE || secrets.SUPERMARKET_UPGRADE }} # 京小超自动升级，自动升级,顺序:解锁升级商品、升级货架,true表示自动升级,false表示关闭自动升级
@@ -213,7 +213,7 @@ jobs:
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_unsubscribe.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_unsubscribe.js
                   UN_SUBSCRIBES: ${{ github.event.client_payload.UN_SUBSCRIBES || secrets.UN_SUBSCRIBES }} # 共四个参数,换行隔开. 四个参数分别表示取关商品数量,取关店铺数量,遇到此商品不再进行取关, 遇到此店铺不再进行取关
 
             - name: "运行 【京东CrazyJoy日常任务】2min/账号"
@@ -221,6 +221,6 @@ jobs:
               run: |
                   node execute.js
               env:
-                  SYNCURL: https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_crazy_joy.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_crazy_joy.js
                   JDJOY_HELPSELF: ${{ github.event.client_payload.JDJOY_HELPSELF || secrets.JDJOY_HELPSELF }} # 疯狂的joy循环助力，`true`表示循环助力,`false`表示不循环助力，默认不开启循环助力。
                   JDJOY_APPLYJDBEAN: ${{ github.event.client_payload.JDJOY_APPLYJDBEAN || secrets.JDJOY_APPLYJDBEAN }} # 疯狂的joy京豆兑换，目前最小值为500/1000京豆，默认不开启京豆兑换。

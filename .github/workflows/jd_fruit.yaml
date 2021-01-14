@@ -48,7 +48,7 @@ jobs:
                   JD_USER_AGENT: ${{ github.event.client_payload.JD_USER_AGENT || secrets.JD_USER_AGENT }}
                   JD_DEBUG: ${{ github.event.client_payload.JD_DEBUG || secrets.JD_DEBUG }}
                   DO_NOT_FORK: ${{ github.event.client_payload.DO_NOT_FORK || secrets.DO_NOT_FORK }}
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/raw/master/jd_fruit.js
+                  SYNCURL: https://gitee.com/lxk0301/jd_scripts/raw/master/jd_fruit.js
                   #独立配置
                   IGNORE_COOKIE_JDNC: ${{ github.event.client_payload.IGNORE_COOKIE_JDNC || secrets.IGNORE_COOKIE_JDNC }} #京东农场禁用某些cookie的执行,因为通知太烦了呀,比如要禁用第2和第四个的执行,则填入[2,4]即可,包含中括号哦
                   FRUIT_BEAN_CARD: ${{ github.event.client_payload.FRUIT_BEAN_CARD || secrets.FRUIT_BEAN_CARD }} # 农场使用水滴换豆卡(如果出现限时活动时100g水换20豆,此时比浇水划算,推荐换豆),true表示换豆(不浇水),false表示不换豆(继续浇水),脚本默认是浇水
